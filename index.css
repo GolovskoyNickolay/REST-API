@@ -1,0 +1,13 @@
+#cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.goods{
+    width: 500px;
+}
+.goods article{
+    float: right;
+    padding-right: 40px;
+}
