@@ -17,19 +17,53 @@ xhr.onreadystatechange = function () {
             }
         }
     }
-};xhr.send();
+};
+xhr.send();
+function doSend() {
+    var a = document.getElementById("text");
+    var b = document.getElementById("rate");
+    var obj = {
+        rate: b.value,
+        text: a.value
+    };
+    var jsn = JSON.stringify(obj);
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/1');
+    xhr2.setRequestHeader('Content-Type', 'application/json');
+    xhr2.send(jsn);
+    xhr2.onreadystatechange = function () {
+        if (xhr2.state == 4 && xhr2.readyState == 201) {
+            console.log(xhr2.responseText);
+        }
+    }
+};
 
 var xhr1 = new XMLHttpRequest();
-    for(var i = 1; i < 3; i++) {
-        xhr1.open('GET','http://smktesting.herokuapp.com/api/reviews/'+i+'');
-        xhr1.onreadystatechange = function(){
-            if(xhr1.readyState == 4 && xhr1.status == 200){
-                var a = xhr1.responseText;
-                a = JSON.parse(a);
-                console.log(a);
+    xhr1.open('GET', 'http://smktesting.herokuapp.com/api/reviews/1');
+    xhr1.onreadystatechange = function () {
+        if (xhr1.readyState == 4 && xhr1.status == 200) {
+            var a = xhr1.responseText;
+            a = JSON.parse(a);
+            var b = document.getElementById("reviews");
+            for(var i = a.length - 1; i > 0; i--) {
+                var id = a[i].id;
+                var product = a[i].product;
+                var rate = a[i].rate;
+                var text = a[i].text;
+                var create = a[i].created_at + a[i].created_by.username;
+                b.innerHTML += '<p>'+ create + '</p>'+
+                                '<p>'+ rate + '</p>'+
+                                '<p>'+ text + '</p>';
+
+
+    }
+
+
             }
-        }
-    };xhr1.send();
+
+    }
+
+;xhr1.send();
 
 
 function doRegistration() {
@@ -55,7 +89,8 @@ function doRegistration() {
     }
 };
 
-function doAuthorisation(){
+function doAuthorisation() {
+
     var username = document.getElementById("usernameA");
     var password = document.getElementById("passwordA");
     var obj = {
@@ -67,10 +102,15 @@ function doAuthorisation(){
     xhr.open('POST', 'http://smktesting.herokuapp.com/api/login/');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(jsn);
-    xhr.onreadystatechange = function (){
+    xhr.onreadystatechange = function () {
 
-        if(xhr.readyState == 4 && xhr.status == 200){
-            console.log(xhr.responseText);
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var a = JSON.parse(xhr.responseText);
+            console.log(a);
+            if (a.success == true) {
+              var token = a.token;
+               console.log(token);
+            }
         }
     }
 
