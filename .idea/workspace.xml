@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f200dbea-1c9c-40cb-8d8d-4902436dc0ff" name="Default" comment="">
+    <list default="true" id="f200dbea-1c9c-40cb-8d8d-4902436dc0ff" name="Default" comment="qweqw">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
@@ -40,8 +40,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.961538">
-              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -50,12 +50,15 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22709924">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state vertical-scroll-proportion="1.630814">
+              <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
               <folding>
-                <element signature="n#!!block;n#doSend#0" expanded="false" />
                 <element signature="n#!!block;n#doRegistration#0" expanded="false" />
                 <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+                <element signature="n#!!block;n#showProduct#0" expanded="false" />
+                <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+                <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+                <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -96,8 +99,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="215" />
-    <option name="y" value="54" />
+    <option name="x" value="249" />
+    <option name="y" value="51" />
     <option name="width" value="1058" />
     <option name="height" value="684" />
   </component>
@@ -126,7 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -147,7 +150,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,13 +225,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="215" y="54" width="1058" height="684" extended-state="0" />
-    <editor active="true" />
+    <frame x="249" y="51" width="1058" height="684" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25490198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25490198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32874355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32874355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32730561" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -253,6 +256,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="qweqw" />
+    <option name="LAST_COMMIT_MESSAGE" value="qweqw" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -282,11 +289,80 @@
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <caret line="135" column="6" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1457354315755" expanded="true" signature="95:115" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#doRegistration#0" expanded="false" />
+            <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1457354315755" expanded="true" signature="95:115" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!block;n#doRegistration#0" expanded="false" />
+            <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -314,9 +390,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -344,9 +423,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -374,9 +456,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -404,9 +489,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -434,9 +522,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -454,9 +545,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -474,9 +568,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -494,9 +591,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -505,7 +605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39421338">
           <caret line="175" column="6" selection-start-line="175" selection-start-column="6" selection-end-line="175" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -521,20 +620,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.961538">
-          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22709924">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        <state vertical-scroll-proportion="1.630814">
+          <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
           <folding>
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
+            <element signature="n#!!block;n#showProduct#0" expanded="false" />
+            <element signature="n#!!block;n#viewReviews#0" expanded="false" />
+            <marker date="1457979553089" expanded="true" signature="2625:2883" placeholder="..." />
+            <marker date="1457979553089" expanded="true" signature="2625:2903" placeholder="..." />
           </folding>
         </state>
       </provider>
