@@ -46,9 +46,8 @@ function doAuthorisation() {
     }
 
 };
+
 var token;
-
-
 var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
     xhr.onreadystatechange = function () {
@@ -57,7 +56,7 @@ var xhr = new XMLHttpRequest();
             a = JSON.parse(a);
             var b = document.getElementById("table");
             for (var i = 0; i < a.length; i++) {
-                b.innerHTML += '<button>' + a[i].title + '</button>'
+                b.innerHTML += '<button id="'+a[i].id+'" onclick="showProduct()">' + a[i].title + '</button>'
             }
         }
     };
