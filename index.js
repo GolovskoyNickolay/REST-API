@@ -98,6 +98,7 @@ function showProduct(value) {
                             a = JSON.parse(a);
                             console.log(a);
                             var b = document.getElementById("reviews");
+                            
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;
