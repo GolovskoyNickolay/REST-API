@@ -56,14 +56,15 @@ var xhr = new XMLHttpRequest();
             a = JSON.parse(a);
             var b = document.getElementById("table");
             for (var i = 0; i < a.length; i++) {
-                b.innerHTML += '<button id="'+a[i].id+'" onclick="showProduct()">' + a[i].title + '</button>'
+                b.innerHTML += '<button value="'+i+'" onclick="showProduct(value)">' + a[i].title + '</button>'
             }
         }
     };
     xhr.send();
 
 
-    function showProduct() {
+    function showProduct(value) {
+        value = +value;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
         xhr.onreadystatechange = function () {
@@ -72,16 +73,14 @@ var xhr = new XMLHttpRequest();
                     var a = xhr.responseText;
                     var cont = document.getElementById("cont");
                     a = JSON.parse(a);
-                    for (var i = 0; i < a.length; i++) {
-                        var id = a[i].id;
-                        var title = a[i].title;
-                        var img = a[i].img;
-                        var text = a[i].text;
-                        cont.innerHTML += '<div id="' + id + '" class="goods">' + '<h3><b>' + title +
+                        var id = a[value].id;
+                        var title = a[value].title;
+                        var img = a[value].img;
+                        var text = a[value].text;
+                        cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3><b>' + title +
                             '</b></h3>' + '<img src="http://smktesting.herokuapp.com/static/' + img + '">' +
                             '<article>' + text + '</article>' +
                             '<button onclick="viewReviews()"></button>' + '</div>';
-                    }
                 }
             }
         };
