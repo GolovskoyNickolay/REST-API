@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f200dbea-1c9c-40cb-8d8d-4902436dc0ff" name="Default" comment="qweqw">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
     </list>
     <ignored path="lightTT.iws" />
@@ -26,7 +27,7 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-6.5384617">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -36,8 +37,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+            <state vertical-scroll-proportion="-6.1153846">
+              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -46,13 +47,12 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25904763">
-              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.9352381">
+              <caret line="106" column="65" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
               <folding>
                 <element signature="n#!!block;n#doRegistration#0" expanded="false" />
                 <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-                <element signature="n#!!block;n#showProduct#0" expanded="false" />
-                <element signature="n#!!block;n#doSend#0" expanded="false" />
+                <element signature="n#!!block;n#sendComment#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -93,8 +93,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-46" />
-    <option name="y" value="66" />
+    <option name="x" value="39" />
+    <option name="y" value="59" />
     <option name="width" value="1227" />
     <option name="height" value="684" />
   </component>
@@ -219,7 +219,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-46" y="66" width="1227" height="684" extended-state="0" />
+    <frame x="39" y="59" width="1227" height="684" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21278386" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -285,8 +285,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -314,8 +313,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -343,8 +341,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -372,8 +369,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -401,8 +397,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -430,8 +425,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -459,8 +453,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -488,8 +481,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -517,8 +509,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -546,8 +537,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -575,8 +565,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -596,8 +585,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -617,8 +605,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -638,8 +625,7 @@
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-6.5384617">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
@@ -661,21 +647,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        <state vertical-scroll-proportion="-6.1153846">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25904763">
-          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.9352381">
+          <caret line="106" column="65" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
           <folding>
             <element signature="n#!!block;n#doRegistration#0" expanded="false" />
             <element signature="n#!!block;n#doAuthorisation#0" expanded="false" />
-            <element signature="n#!!block;n#showProduct#0" expanded="false" />
-            <element signature="n#!!block;n#doSend#0" expanded="false" />
+            <element signature="n#!!block;n#sendComment#0" expanded="false" />
           </folding>
         </state>
       </provider>
