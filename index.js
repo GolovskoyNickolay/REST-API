@@ -46,9 +46,10 @@ function doAuthorisation() {
     }
 
 };
-
+var val;
 var token;
-var xhr = new XMLHttpRequest();
+
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
     xhr.onreadystatechange = function () {
         if (xhr.status == 200 && xhr.readyState == 4) {
@@ -56,15 +57,17 @@ var xhr = new XMLHttpRequest();
             a = JSON.parse(a);
             var b = document.getElementById("table");
             for (var i = 0; i < a.length; i++) {
-                b.innerHTML += '<button value="'+i+'" onclick="showProduct(value)">' + a[i].title + '</button>'
+                b.innerHTML += '<button value="' + i + '" onclick="showProduct(value)">' + a[i].title + '</button>'
             }
         }
     };
     xhr.send();
 
 
+
     function showProduct(value) {
         value = +value;
+        val = value;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
         xhr.onreadystatechange = function () {
@@ -80,12 +83,12 @@ var xhr = new XMLHttpRequest();
                         cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3><b>' + title +
                             '</b></h3>' + '<img src="http://smktesting.herokuapp.com/static/' + img + '">' +
                             '<article>' + text + '</article>' +
-                            '<button onclick="viewReviews()"></button>' + '</div>';
+                            '<button onclick="viewReviews()">Comments</button>' + '</div>';
                 }
             }
         };
         xhr.send();
-    };
+    }
 
     function doSend() {
         var a = document.getElementById("text");
@@ -105,25 +108,26 @@ var xhr = new XMLHttpRequest();
                 console.log(xhr2.responseText);
             }
         }
-    };
+    }
 
     function viewReviews() {
+        val = val + 1;
         var xhr1 = new XMLHttpRequest();
-        xhr1.open('GET', 'http://smktesting.herokuapp.com/api/reviews/1');
+        xhr1.open('GET', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr1.onreadystatechange = function () {
             if (xhr1.readyState == 4 && xhr1.status == 200) {
                 var a = xhr1.responseText;
                 a = JSON.parse(a);
+                console.log(a);
                 var b = document.getElementById("reviews");
                 for (var i = a.length - 1; i > 0; i--) {
-                    var id = a[i].id;
-                    var product = a[i].product;
                     var rate = a[i].rate;
                     var text = a[i].text;
                     var create = a[i].created_at + ' ' + a[i].created_by.username;
                     b.innerHTML += '<p>' + create + '</p>' +
                         '<p>Rate:' + rate + '</p>' +
                         '<p>' + text + '</p>';
+
 
 
                 }
