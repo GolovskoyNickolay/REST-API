@@ -54,6 +54,7 @@ function doAuthorisation() {
 }
 var val;
 var token;
+var startValue;
 
 
     var xhr = new XMLHttpRequest();
@@ -110,9 +111,9 @@ function showProduct(value) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;
                                 var create =a[i].created_by.username + ' at ' +  a[i].created_at;
-                                b.innerHTML += '<p>' + create + '</p>' +
+                                b.innerHTML +='<div class="comments">' +'<p>' + create + '</p>' +
                                     '<p>Rate:' + rate + '</p>' +
-                                    '<p>' + text + '</p>';
+                                    '<p>' + text + '</p>' + '</div>';
 
                             }
 
@@ -126,17 +127,33 @@ function showProduct(value) {
         };
         xhr.send();
     }
+function getStarValue(value){
+    startValue = +value;
 
+
+}
 function  sendComment (){
     var text = document.getElementById("text");
     var rate = document.getElementById("rate");
     var obj = {
-        rate: rate.value,
+        rate: startValue,
         text: text.value
     };
     var jsn = JSON.stringify(obj);
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
+        xhr2.onreadystatechange = function(){
+            if(xhr2.status == 401 && xhr2.readyState == 4){
+                alert("You should sign in at first");
+            }
+            if(xhr2.status == 200 && xhr2.readyState == 4){
+                alert("Your comment have been sent successfully");
+            }
+            if(xhr2.status == 500 && xhr2.readyState == 4){
+                alert("You should write in rating and text");
+            }
+
+        };
     xhr2.setRequestHeader('Content-Type', 'application/json');
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
