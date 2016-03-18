@@ -1,13 +1,22 @@
 #cont{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
 
 }
 .goods{
     width: 500px;
 }
 .goods article{
-    float: right;
+    float: bottom;
     padding-right: 40px;
 }
+#listHide{
+    display: none;
+}
+#list{
+    display: block;
+}
+#onReg{
+    float: right;
+}
+

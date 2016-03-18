@@ -3,38 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <form>
-         <b>Registration Form</b>
+<div class="container-fluid">
 
-            <input id="username" name="username" type="text" placeholder="name" required>
-            <input id="password" name="password" type="password" placeholder="password" required>
-            <button type="button" onclick="doRegistration()">Registration</button>
 
+    <div id="onReg">
+        <h4>Registration</h4>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="username">Name</label>
+                <input id="username" name="username" type="text" placeholder="name"  class="form-control" required>
+            </div><br>
+            <div class="form-group">
+                <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="password" class="form-control" required>
+            </div>
+            <button type="button" onclick="doRegistration()" class="btn btn-default">Registration</button>
      </form>
-    <form>
-        <b>Authorisation Form</b>
-        <input id="usernameA" name="username" type="text" placeholder="name" required>
-        <input id="passwordA" name="password" type="password" placeholder="password" required>
-        <button type="button" onclick="doAuthorisation()">Authorisation</button>
 
-    </form>
+    <h4>Authorisation</h4>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="usernameA">Name</label>
+                <input id="usernameA" name="username" type="text" placeholder="name"  class="form-control" required>
+            </div><br>
+            <div class="form-group">
+                <label for="passwordA">Password</label>
+                <input id="passwordA" name="password" type="password" placeholder="password" class="form-control" required>
+            </div>
+            <button type="button" onclick="doAuthorisation()" class="btn btn-default">Authorisation</button>
+        </form>
+    </div>
 
-
+    <!--List of products(buttons)-->
     <table id="productsList"></table>
 
-    <form>
-        <input id="rate" name="number" type="number" >
-        <input id="text" name="text" type="text">
-        <button type="button" onclick="sendComment()">Send</button>
-    </form>
+    <!--Product-->
+    <div id="cont"></div>
+
+    <div id="comment">
+        <form id="listHide">
+            <label for="rate">Write a number</label>
+            <input id="rate" name="number" type="number">
+            <label for="text">Write your comment</label>
+            <input id="text" name="text" type="text">
+            <button type="button" onclick="sendComment()">Send</button>
+        </form>
+    </div>
 
 
     <div id="reviews">
+    </div>
+</div>
 
-    <div id="cont"></div></div>
+
+
+
+
+
+
 
 
 <script src="index.js"></script>

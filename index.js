@@ -11,15 +11,18 @@ function doRegistration() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 201) {
-                console.log(xhr.responseText);
-
-
-            }
+        if (xhr.readyState == 4 && xhr.status == 201) {
+            alert("You have been registered successfully");
         }
-    }
-};
+                if(xhr.status == 200 && xhr.readyState == 4){
+                    var txt = xhr.responseText;
+                        txt = JSON.parse(txt);
+                    alert(txt.message);
+
+
+                }
+        }
+}
 function doAuthorisation() {
 
     var username = document.getElementById("usernameA");
@@ -39,13 +42,16 @@ function doAuthorisation() {
             var a = JSON.parse(xhr.responseText);
             console.log(a);
             if (a.success == true) {
-                token = a.token;
-
+                alert("Authorisation is successful")
+                token = a.token; //take token into the global scope for sending comments
+            }
+            else{
+                alert("Authorisation is fail");
             }
         }
     }
 
-};
+}
 var val;
 var token;
 
@@ -83,9 +89,9 @@ function showProduct(value) {
                         var title = a[value].title;
                         var img = a[value].img;
                         var text1 = a[value].text;
-                        cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3><b>' + title +
-                            '</b></h3>' + '<img src="http://smktesting.herokuapp.com/static/' + img + '">' +
-                            '<article>' + text1 + '</article>' +'</div>';
+                        cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3>' + title +
+                            '</h3>' + '<img src="http://smktesting.herokuapp.com/static/' + img + '">' +
+                            '<article>'+'Product description:'+'<br>' + text1 + '</article>' +'</div>';
 
 
                     //Comments
@@ -96,18 +102,17 @@ function showProduct(value) {
                         if (xhr1.readyState == 4 && xhr1.status == 200) {
                             var a = xhr1.responseText;
                             a = JSON.parse(a);
-                            console.log(a);
                             var b = document.getElementById("reviews");
-                            
+                                     b.innerHTML = "";
+                            var list = document.getElementsByTagName("form")[2];
+                                list.id = "list";
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;
                                 var create =a[i].created_by.username + ' at ' +  a[i].created_at;
-                                b.innerHTML += '<div>' + '<p>' + create + '</p>' +
+                                b.innerHTML += '<p>' + create + '</p>' +
                                     '<p>Rate:' + rate + '</p>' +
-                                    '<p>' + text + '</p>'+'</div>>';
-
-
+                                    '<p>' + text + '</p>';
 
                             }
 
@@ -135,12 +140,9 @@ function  sendComment (){
     xhr2.setRequestHeader('Content-Type', 'application/json');
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
-    xhr2.onreadystatechange = function () {
-        if (xhr2.state == 4 && xhr2.readyState == 201) {
-            console.log(xhr2.responseText);
-        }
     }
-}
+
+
 
 
 
