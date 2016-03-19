@@ -32,8 +32,42 @@
 
            <div class="row"></div>
 
-            <div id="cont" class="col-md-4"></div>
-                     <div id="onReg" class="col-md-4">
+            <div id="cont" class="col-md-3"></div>
+                    <div id="reviews" class="col-md-3"></div>
+                    <div id="leaveComment" class="col-md-2">
+
+        <form id="list">
+
+            <div id="reviewStars-input">
+
+                <input id="star-4" type="radio" value="5" name="reviewStars" onclick="getStarValue(value)">
+                <label title="gorgeous" for="star-4"></label>
+
+                <input id="star-3" type="radio" value="4" name="reviewStars" onclick="getStarValue(value)">
+                <label title="good" for="star-3"></label>
+
+                <input id="star-2" type="radio" value="3" name="reviewStars" onclick="getStarValue(value)">
+                <label title="regular" for="star-2"></label>
+
+                <input id="star-1" type="radio" value="2" name="reviewStars" onclick="getStarValue(value)">
+                <label title="poor" for="star-1"></label>
+
+                <input id="star-0" type="radio" value="1" name="reviewStars" onclick="getStarValue(value)">
+                <label title="bad" for="star-0"></label>
+
+            </div>
+
+
+            <div>
+                <form>
+                    <label for="text">Write your comment</label>
+                    <input id="text" name="text" type="text">
+                    <button type="button" onclick="sendComment()">Send</button>
+                </form>
+            </div>
+        </form>
+    </div>
+                     <div id="onReg" class="col-md-2">
         <div class="span6">
             <h4>Registration</h4>
             <form class="form-inline">
@@ -70,43 +104,12 @@
             </form>
         </div>
     </div>
-                <div id="leaveComment" class="col-md-4">
 
-        <form id="listHide">
-
-            <div id="reviewStars-input">
-
-                <input id="star-4" type="radio" value="5" name="reviewStars" onclick="getStarValue(value)">
-                <label title="gorgeous" for="star-4"></label>
-
-                <input id="star-3" type="radio" value="4" name="reviewStars" onclick="getStarValue(value)">
-                <label title="good" for="star-3"></label>
-
-                <input id="star-2" type="radio" value="3" name="reviewStars" onclick="getStarValue(value)">
-                <label title="regular" for="star-2"></label>
-
-                <input id="star-1" type="radio" value="2" name="reviewStars" onclick="getStarValue(value)">
-                <label title="poor" for="star-1"></label>
-
-                <input id="star-0" type="radio" value="1" name="reviewStars" onclick="getStarValue(value)">
-                <label title="bad" for="star-0"></label>
-
-            </div>
-
-
-            <div>
-                <form>
-                    <label for="text">Write your comment</label>
-                    <input id="text" name="text" type="text">
-                    <button type="button" onclick="sendComment()">Send</button>
-                </form>
-            </div>
-        </form>
-    </div>
 </div>
 
 
 
+                       
 
 
 
@@ -121,7 +124,10 @@
 
 
 
-            <div id="reviews"></div>
+
+
+
+
 </div>
 
     <script src="index.js"></script>
