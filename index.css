@@ -16,8 +16,18 @@
     margin-bottom: 10px;
 }
 #onReg{
-    float: right;
+    position: absolute;
+    margin-left: 70%;
+
 }
+.comments{
+    margin-top: 20px;
+
+}
+#productsList button{
+    margin: 5px;
+}
+
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
     background: url('http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png') no-repeat;
 }
@@ -87,9 +97,9 @@
 #reviewStars-input #star-5 {
     left: 265px;
 }
-.comments{
-    margin-top: 20px;
 
-}
+
+
+
 
 

@@ -65,7 +65,8 @@ var startValue;
             a = JSON.parse(a);
             var b = document.getElementById("productsList");
             for (var i = 0; i < a.length; i++) {
-                b.innerHTML += '<button value="' + i + '" onclick="showProduct(value)">' + a[i].title + '</button>'
+                b.innerHTML += '<button class="btn btn-primary" value="' + i + '" onclick="showProduct(value)">'
+                    + a[i].title + '</button>'
             }
         }
     };
@@ -91,7 +92,7 @@ function showProduct(value) {
                         var img = a[value].img;
                         var text1 = a[value].text;
                         cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3>' + title +
-                            '</h3>' + '<img src="http://smktesting.herokuapp.com/static/' + img + '">' +
+                            '</h3>' + '<img class="img-thumbnail"" src="http://smktesting.herokuapp.com/static/' + img + '">' +
                             '<article>'+'Product description:'+'<br>' + text1 + '</article>' +'</div>';
 
 
