@@ -17,87 +17,112 @@
 <body>
 <div class="container-fluid">
 
-            <!--Registration form-->
-            <div id="onReg">
-                <h4>Registration</h4>
 
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="username">Name</label>
-                        <input id="username" name="username" type="text" placeholder="name" class="form-control" required>
-                    </div>
-                    <br>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" type="password" placeholder="password" class="form-control"
-                               required>
-                    </div>
-                    <button type="button" onclick="doRegistration()" class="btn btn-success">Registration</button>
-                </form>
-
-                <h4>Authorisation</h4>
-
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="usernameA">Name</label>
-                        <input id="usernameA" name="username" type="text" placeholder="name" class="form-control" required>
-                    </div>
-                    <br>
-
-                    <div class="form-group">
-                        <label for="passwordA">Password</label>
-                        <input id="passwordA" name="password" type="password" placeholder="password" class="form-control"
-                               required>
-                    </div>
-                    <button type="button" onclick="doAuthorisation()" class="btn btn-success">Authorisation</button>
-                </form>
-            </div>
 
             <!--List of products(buttons)-->
             <div id="productsList"></div>
 
-            <!--Product-->
-            <div id="cont" class="row"></div>
-            <!--Leave comment-->
-            <div id="leaveComment">
-
-                <form id="listHide">
-
-                    <div id="reviewStars-input">
-
-                        <input id="star-4" type="radio" value="5" name="reviewStars" onclick="getStarValue(value)">
-                        <label title="gorgeous" for="star-4"></label>
-
-                        <input id="star-3" type="radio" value="4" name="reviewStars" onclick="getStarValue(value)">
-                        <label title="good" for="star-3"></label>
-
-                        <input id="star-2" type="radio" value="3" name="reviewStars" onclick="getStarValue(value)">
-                        <label title="regular" for="star-2"></label>
-
-                        <input id="star-1" type="radio" value="2" name="reviewStars" onclick="getStarValue(value)">
-                        <label title="poor" for="star-1"></label>
-
-                        <input id="star-0" type="radio" value="1" name="reviewStars" onclick="getStarValue(value)">
-                        <label title="bad" for="star-0"></label>
-
-                    </div>
 
 
-                    <div>
-                        <form>
-                            <label for="text">Write your comment</label>
-                            <input id="text" name="text" type="text">
-                            <button type="button" onclick="sendComment()">Send</button>
-                        </form>
-                    </div>
-                </form>
+
+
+
+
+
+
+           <div class="row"></div>
+
+            <div id="cont" class="col-md-4"></div>
+                     <div id="onReg" class="col-md-4">
+        <div class="span6">
+            <h4>Registration</h4>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input id="username" name="username" type="text" placeholder="name" class="form-control" required>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" placeholder="password" class="form-control"
+                           required>
+                </div>
+                <button type="button" onclick="doRegistration()" class="btn btn-success">Registration</button>
+            </form>
+        </div>
+
+        <div class="span6">
+            <h4>Authorisation</h4>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="usernameA">Name</label>
+                    <input id="usernameA" name="username" type="text" placeholder="name" class="form-control" required>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label for="passwordA">Password</label>
+                    <input id="passwordA" name="password" type="password" placeholder="password" class="form-control"
+                           required>
+                </div>
+                <button type="button" onclick="doAuthorisation()" class="btn btn-success">Authorisation</button>
+            </form>
+        </div>
+    </div>
+                <div id="leaveComment" class="col-md-4">
+
+        <form id="listHide">
+
+            <div id="reviewStars-input">
+
+                <input id="star-4" type="radio" value="5" name="reviewStars" onclick="getStarValue(value)">
+                <label title="gorgeous" for="star-4"></label>
+
+                <input id="star-3" type="radio" value="4" name="reviewStars" onclick="getStarValue(value)">
+                <label title="good" for="star-3"></label>
+
+                <input id="star-2" type="radio" value="3" name="reviewStars" onclick="getStarValue(value)">
+                <label title="regular" for="star-2"></label>
+
+                <input id="star-1" type="radio" value="2" name="reviewStars" onclick="getStarValue(value)">
+                <label title="poor" for="star-1"></label>
+
+                <input id="star-0" type="radio" value="1" name="reviewStars" onclick="getStarValue(value)">
+                <label title="bad" for="star-0"></label>
+
             </div>
 
 
-            <div id="reviews"></div>
+            <div>
+                <form>
+                    <label for="text">Write your comment</label>
+                    <input id="text" name="text" type="text">
+                    <button type="button" onclick="sendComment()">Send</button>
+                </form>
+            </div>
+        </form>
     </div>
+</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="reviews"></div>
+</div>
 
     <script src="index.js"></script>
 

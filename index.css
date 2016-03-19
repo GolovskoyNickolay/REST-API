@@ -1,8 +1,3 @@
-#cont{
-    display: flex;
-    flex-direction: row;
-
-}
 .goods article{
     float: bottom;
     padding-right: 40px;
@@ -15,17 +10,17 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-#onReg{
-    position: absolute;
-    margin-left: 70%;
-
-}
 .comments{
     margin-top: 20px;
 
 }
 #productsList button{
     margin: 5px;
+}
+
+#leaveComment{
+    width: 30%;
+
 }
 
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
@@ -35,12 +30,10 @@
 #reviewStars-input {
 
     /*fix floating problems*/
-    overflow: hidden;
     *zoom: 1;
     /*end of fix floating problems*/
 
     position: relative;
-    float: left;
 }
 
 #reviewStars-input input {
