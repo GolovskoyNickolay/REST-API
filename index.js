@@ -108,7 +108,9 @@ function showProduct(value) {
                             var b = document.getElementById("reviews");
                                      b.innerHTML = "";
                             var list = $("form")[2];
-                                list.id = "list";
+                                list.id = "list";//change id for seeing rating
+                            var mainRaw = $("#mainHide")[0];
+                                mainRaw.id = "main";
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;

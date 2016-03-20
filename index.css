@@ -3,6 +3,13 @@ body{
     margin-right: 10%;
     border: solid 1px black;
 }
+#mainHide{
+    display: none;
+}
+#main{
+    display: block;
+    border-top: solid 2px black ;
+}
 .goods article{
     float: bottom;
     padding-right: 40px;
