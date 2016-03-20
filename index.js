@@ -1,9 +1,9 @@
 function doRegistration() {
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
+    var username = $("#username")[0];
+    var password = $("#password")[0];
     var obj = {
         username: username.value,
-        password: password.value,
+        password: password.value
     };
     var jsn = JSON.stringify(obj);
     var xhr = new XMLHttpRequest();
@@ -25,8 +25,8 @@ function doRegistration() {
 }
 function doAuthorisation() {
 
-    var username = document.getElementById("usernameA");
-    var password = document.getElementById("passwordA");
+    var username = $("#usernameA")[0];
+    var password = $("#passwordA")[0];
     var obj = {
         username: username.value,
         password: password.value
@@ -63,7 +63,7 @@ var startValue;
           if (xhr.status == 200 && xhr.readyState == 4) {
               var a = xhr.responseText;
               a = JSON.parse(a);
-              var b = document.getElementById("productsList");
+              var b = $("#productsList")[0];
               for (var i = 0; i < a.length; i++) {
                   b.innerHTML += '<button class="btn btn-primary" value="' + i + '" onclick="showProduct(value)">'
                       + a[i].title + '</button>'
@@ -86,7 +86,7 @@ function showProduct(value) {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     var a = xhr.responseText;
-                    var cont = document.getElementById("cont");
+                    var cont = $("#cont")[0];
                     a = JSON.parse(a);
                         var id = a[value].id;
                         var title = a[value].title;
@@ -107,7 +107,7 @@ function showProduct(value) {
                             a = JSON.parse(a);
                             var b = document.getElementById("reviews");
                                      b.innerHTML = "";
-                            var list = document.getElementsByTagName("form")[2];
+                            var list = $("form")[2];
                                 list.id = "list";
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
@@ -135,8 +135,8 @@ function getStarValue(value){
 
 }
 function  sendComment (){
-    var text = document.getElementById("text");
-    var rate = document.getElementById("rate");
+    var text = $("#text")[0];
+    var rate = $("#rate")[0];
     var obj = {
         rate: startValue,
         text: text.value
