@@ -56,21 +56,22 @@ var val;
 var token;
 var startValue;
 
+        //Load the list of products
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
+      xhr.onreadystatechange = function () {
+          if (xhr.status == 200 && xhr.readyState == 4) {
+              var a = xhr.responseText;
+              a = JSON.parse(a);
+              var b = document.getElementById("productsList");
+              for (var i = 0; i < a.length; i++) {
+                  b.innerHTML += '<button class="btn btn-primary" value="' + i + '" onclick="showProduct(value)">'
+                      + a[i].title + '</button>'
+              }
+          }
+      };
+      xhr.send();
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
-    xhr.onreadystatechange = function () {
-        if (xhr.status == 200 && xhr.readyState == 4) {
-            var a = xhr.responseText;
-            a = JSON.parse(a);
-            var b = document.getElementById("productsList");
-            for (var i = 0; i < a.length; i++) {
-                b.innerHTML += '<button class="btn btn-primary" value="' + i + '" onclick="showProduct(value)">'
-                    + a[i].title + '</button>'
-            }
-        }
-    };
-    xhr.send();
 
 
 
@@ -112,8 +113,8 @@ function showProduct(value) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;
                                 var create =a[i].created_by.username + ' at ' +  a[i].created_at;
-                                b.innerHTML +='<div class="comments">' +'<p>' + create + '</p>' +
-                                    '<p>Rate:' + rate + '</p>' +
+                                b.innerHTML +='<div class="list-group-item">' +'<p>' + create + '</p>' +
+                                    '<p>Rate: ' + rate + '</p>' +
                                     '<p>' + text + '</p>' + '</div>';
 
                             }
@@ -150,9 +151,13 @@ function  sendComment (){
             if(xhr2.status == 200 && xhr2.readyState == 4){
                 alert("Your comment have been sent successfully");
             }
-            if(xhr2.status == 500 && xhr2.readyState == 4){
+            if(xhr2.status == 500  && xhr2.readyState == 4){
                 alert("You should write in rating and text");
             }
+            if(xhr2.status == 400  && xhr2.readyState == 4){
+                alert("You should write in rating and text");
+            }
+
 
         };
     xhr2.setRequestHeader('Content-Type', 'application/json');
