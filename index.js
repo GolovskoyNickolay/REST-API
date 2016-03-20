@@ -93,7 +93,7 @@ function showProduct(value) {
                         var img = a[value].img;
                         var text1 = a[value].text;
                         cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3>' + title +
-                            '</h3>' + '<img class="img-thumbnail"" src="http://smktesting.herokuapp.com/static/' + img + '">' +
+                            '</h3>' + '<img " src="http://smktesting.herokuapp.com/static/' + img + '">' +
                             '<article>'+'Product description:'+'<br>' + text1 + '</article>' +'</div>';
 
 
@@ -109,8 +109,6 @@ function showProduct(value) {
                                      b.innerHTML = "";
                             var list = $("form")[2];
                                 list.id = "list";//change id for seeing rating
-                            var mainRaw = $("#mainHide")[0];
-                                mainRaw.id = "main";
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;

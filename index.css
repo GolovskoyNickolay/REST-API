@@ -2,13 +2,11 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     border: solid 1px black;
+    background-color: aliceblue;
 }
-#mainHide{
-    display: none;
-}
-#main{
-    display: block;
-    border-top: solid 2px black ;
+
+.goods h3{
+    border-bottom: 2px solid forestgreen;
 }
 .goods article{
     float: bottom;
