@@ -1,6 +1,6 @@
 body{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 9%;
+    margin-right: 9%;
     border: solid 1px black;
     background-color: aliceblue;
 }
@@ -36,7 +36,7 @@ body{
 }
 
 
-
+/*Rating not mine, take it from other site*/
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
     background: url('http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png') no-repeat;
 }
