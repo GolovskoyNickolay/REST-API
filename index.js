@@ -40,7 +40,6 @@ function doAuthorisation() {
 
         if (xhr.readyState == 4 && xhr.status == 200) {
             var a = JSON.parse(xhr.responseText);
-            console.log(a);
             if (a.success == true) {
                 alert("Authorisation is successful")
                 token = a.token; //take token into the global scope for sending comments
@@ -52,9 +51,7 @@ function doAuthorisation() {
     }
 
 }
-var val;
-var token;
-var startValue;
+var val, token, startValue, commentsArray;
 
         //Load the list of products
       var xhr = new XMLHttpRequest();
@@ -116,9 +113,7 @@ function showProduct(value) {
                                 b.innerHTML +='<div class="list-group-item">' +'<p>' + create + '</p>' +
                                     '<p>Rate: ' + rate + '</p>' +
                                     '<p>' + text + '</p>' + '</div>';
-
                             }
-
 
                         }
 
@@ -136,7 +131,6 @@ function getStarValue(value){
 }
 function  sendComment (){
     var text = $("#text")[0];
-    var rate = $("#rate")[0];
     var obj = {
         rate: startValue,
         text: text.value
@@ -149,6 +143,15 @@ function  sendComment (){
                 alert("You should sign in at first");
             }
             if(xhr2.status == 200 && xhr2.readyState == 4){
+                var r = JSON.parse(xhr2.responseText);
+                    if(r.success == true){
+                        var b = document.getElementById("reviews");
+                            var newElement = document.createElement("div");
+                            newElement.innerHTML = '<div class="list-group-item">'+
+                            '<p>Rate: ' + startValue + '</p>' +
+                            '<p>' + text.value + '</p>' + '</div>';
+                        b.insertBefore(newElement, b.children[0]);
+                    }
                 alert("Your comment have been sent successfully");
             }
             if(xhr2.status == 500  && xhr2.readyState == 4){
@@ -160,6 +163,7 @@ function  sendComment (){
 
 
         };
+
     xhr2.setRequestHeader('Content-Type', 'application/json');
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
