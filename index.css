@@ -4,7 +4,14 @@ body{
     border: solid 1px black;
     background-color: aliceblue;
 }
-
+#authorisationCont{
+    display: none;
+    margin-top: 60px;
+}
+#enter{
+    margin: 10px;
+    float: right;
+}
 .goods h3{
     border-bottom: 2px solid forestgreen;
 }

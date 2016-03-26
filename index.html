@@ -21,14 +21,13 @@
         <div id="productsList" class="col-md-6"></div>
         <div id="onReg" class="col-md-6">
             <div class="span6">
+
                 <span><b>Registration</b></span>
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="username"></label>
                         <input id="username" name="username" type="text" placeholder="name" class="form-control" required>
                     </div>
-
-
                     <div class="form-group">
                         <label for="password"></label>
                         <input id="password" name="password" type="password" placeholder="password" class="form-control"
@@ -37,20 +36,21 @@
                     <button type="button" onclick="doRegistration()" class="btn btn-success">Registration</button>
                 </form>
             </div>
+                <button class="btn btn-info" type="button" id="enter">I've already registered</button>
 
-            <div class="span6">
+            <div class="span6" id="authorisationCont">
                 <span><b>Authorisation</b></span>
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="usernameA"></label>
                         <input id="usernameA" name="username" type="text" placeholder="name" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label for="passwordA"></label>
                         <input id="passwordA" name="password" type="password" placeholder="password" class="form-control"
                                required>
                     </div>
+
                     <button type="button" onclick="doAuthorisation()" class="btn btn-success">Authorisation</button>
                 </form>
             </div>

@@ -41,17 +41,18 @@ function doAuthorisation() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
-                alert("Authorisation is successful")
+                alert("Authorisation is successful");
+                $("#authorisationCont").slideToggle("slow");
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
-                alert("Authorisation is fail");
+                
             }
         }
     }
 
 }
-var val, token, startValue, commentsArray;
+var val, token, startValue;
 
         //Load the list of products
       var xhr = new XMLHttpRequest();
@@ -152,7 +153,6 @@ function  sendComment (){
                             '<p>' + text.value + '</p>' + '</div>';
                         b.insertBefore(newElement, b.children[0]);
                     }
-                alert("Your comment have been sent successfully");
             }
             if(xhr2.status == 500  && xhr2.readyState == 4){
                 alert("You should write in rating and text");
@@ -168,7 +168,16 @@ function  sendComment (){
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
     }
+$("#enter").click(function () {
+    $("#authorisationCont").slideToggle("slow");
+    $(this).show();
 
+})
+//При регистрации повторно не авторизироваться
+//Оставлять комментарии только после входа или авторизироваться
+//Responsive, зафиксировать звездочки
+//Использовать jQuery, Bootstrap(alert and so on)
+//Вместо кнопок продуктов-закладки
 
 
 
