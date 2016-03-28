@@ -62,10 +62,11 @@
             <div class="row">
 
             <div id="cont" class="col-md-4"></div>
+                    <p class="col-md-4" id="commentBox">If you want comment smth, please, register first</p>
+
              <div id="leaveComment" class="col-md-4">
 
-        <form id="listHide">
-
+                <form id="listHide">
             <div id="reviewStars-input">
 
                 <input id="star-4" type="radio" value="5" name="reviewStars" onclick="getStarValue(value)">
@@ -90,7 +91,7 @@
 
                 <form>
                     <label for="text"></label>
-                    <textarea id="text" name="text" placeholder="Write your comment" rows="5" cols="43"></textarea>
+                    <textarea class="form-control" id="text" name="text" placeholder="Write your comment" rows="5" cols="43"></textarea>
                     <button type="button" onclick="sendComment()" class="btn btn-success">Send</button>
                 </form>
         </form>

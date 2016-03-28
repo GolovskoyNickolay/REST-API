@@ -5,6 +5,7 @@ function doRegistration() {
         username: username.value,
         password: password.value
     };
+   var txt;
     var jsn = JSON.stringify(obj);
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://smktesting.herokuapp.com/api/register/');
@@ -13,10 +14,13 @@ function doRegistration() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             alert("You have been registered successfully");
+            txt = xhr.responseText;
+            txt = JSON.parse(txt);
+            token = txt.token;
         }
                 if(xhr.status == 200 && xhr.readyState == 4){
-                    var txt = xhr.responseText;
-                        txt = JSON.parse(txt);
+                    txt = xhr.responseText;
+                    txt = JSON.parse(txt);
                     alert(txt.message);
 
 
@@ -46,7 +50,7 @@ function doAuthorisation() {
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
-                
+alert('something go wrong, please, try again');
             }
         }
     }
@@ -107,6 +111,7 @@ function showProduct(value) {
                                      b.innerHTML = "";
                             var list = $("form")[2];
                                 list.id = "list";//change id for seeing rating
+                                $("#commentBox").show();
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;
@@ -139,41 +144,45 @@ function  sendComment (){
     var jsn = JSON.stringify(obj);
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
-        xhr2.onreadystatechange = function(){
-            if(xhr2.status == 401 && xhr2.readyState == 4){
+        xhr2.onreadystatechange = function() {
+
+            if (xhr2.status == 401 && xhr2.readyState == 4) {
                 alert("You should sign in at first");
             }
-            if(xhr2.status == 200 && xhr2.readyState == 4){
+            if (xhr2.status == 200 && xhr2.readyState == 4) {
                 var r = JSON.parse(xhr2.responseText);
-                    if(r.success == true){
-                        var b = document.getElementById("reviews");
-                            var newElement = document.createElement("div");
-                            newElement.innerHTML = '<div class="list-group-item">'+
-                            '<p>Rate: ' + startValue + '</p>' +
-                            '<p>' + text.value + '</p>' + '</div>';
-                        b.insertBefore(newElement, b.children[0]);
-                    }
+                if (r.success == true) {
+                    var b = document.getElementById("reviews");
+                    var newElement = document.createElement("div");
+                    newElement.innerHTML = '<div class="list-group-item">' +
+                        '<p>Rate: ' + startValue + '</p>' +
+                        '<p>' + text.value + '</p>' + '</div>';
+                    b.insertBefore(newElement, b.children[0]);
+                }
             }
-            if(xhr2.status == 500  && xhr2.readyState == 4){
+            if (xhr2.status == 500 && xhr2.readyState == 4) {
                 alert("You should write in rating and text");
             }
-            if(xhr2.status == 400  && xhr2.readyState == 4){
+            if (xhr2.status == 400 && xhr2.readyState == 4) {
                 alert("You should write in rating and text");
             }
-
-
         };
+
+
+
 
     xhr2.setRequestHeader('Content-Type', 'application/json');
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
-    }
+}
 $("#enter").click(function () {
     $("#authorisationCont").slideToggle("slow");
     $(this).show();
 
-})
-//При регистрации повторно не авторизироваться
+});
+
+
+
 //Оставлять комментарии только после входа или авторизироваться
 //Responsive, зафиксировать звездочки
 //Использовать jQuery, Bootstrap(alert and so on)

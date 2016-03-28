@@ -36,11 +36,18 @@ body{
 #productsList button{
     margin: 5px;
 }
+#commentBox{
+    display: none;
+    margin-top: 80px;
+
+}
 
 #leaveComment{
     margin-top: 50px;
+    display: none;
 
 }
+
 
 
 /*Rating not mine, take it from other site*/
