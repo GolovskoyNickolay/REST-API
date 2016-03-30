@@ -14,6 +14,8 @@ function doRegistration() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             alert("You have been registered successfully");
+            var showLeaveComment =  $("#leaveComment")[0];
+            showLeaveComment.id = "leaveComment1";
             txt = xhr.responseText;
             txt = JSON.parse(txt);
             token = txt.token;
@@ -46,6 +48,8 @@ function doAuthorisation() {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
                 alert("Authorisation is successful");
+                var showLeaveComment =  $("#leaveComment")[0];
+                showLeaveComment.id = "leaveComment1";
                 $("#authorisationCont").slideToggle("slow");
                 token = a.token; //take token into the global scope for sending comments
             }
@@ -99,6 +103,7 @@ function showProduct(value) {
                             '<article>'+'Product description:'+'<br>' + text1 + '</article>' +'</div>';
 
 
+
                     //Comments
                     val = val + 1;
                     var xhr1 = new XMLHttpRequest();
@@ -111,7 +116,6 @@ function showProduct(value) {
                                      b.innerHTML = "";
                             var list = $("form")[2];
                                 list.id = "list";//change id for seeing rating
-                                $("#commentBox").show();
                             for (var i = a.length - 1; i > 0; i--) {
                                 var rate = a[i].rate;
                                 var text = a[i].text;

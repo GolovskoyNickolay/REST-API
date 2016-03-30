@@ -38,9 +38,11 @@ body{
 }
 #commentBox{
     display: none;
-    margin-top: 80px;
-
 }
+#commentBox1{
+    margin-top: 80px;
+}
+
 
 #leaveComment{
     margin-top: 50px;
@@ -48,9 +50,13 @@ body{
 
 }
 
+#text{
+    resize: vertical;
+  max-height: 150px;
+}
 
 
-/*Rating not mine, take it from other site*/
+
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
     background: url('http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png') no-repeat;
 }
