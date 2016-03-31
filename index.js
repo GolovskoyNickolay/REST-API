@@ -16,6 +16,7 @@ function doRegistration() {
             alert("You have been registered successfully");
             var showLeaveComment =  $("#leaveComment")[0];
             showLeaveComment.id = "leaveComment1";
+            $("#commentBox").hide();
             txt = xhr.responseText;
             txt = JSON.parse(txt);
             token = txt.token;
@@ -50,6 +51,7 @@ function doAuthorisation() {
                 alert("Authorisation is successful");
                 var showLeaveComment =  $("#leaveComment")[0];
                 showLeaveComment.id = "leaveComment1";
+                $("#commentBox").hide();
                 $("#authorisationCont").slideToggle("slow");
                 token = a.token; //take token into the global scope for sending comments
             }
@@ -83,6 +85,10 @@ var val, token, startValue;
 
 
 function showProduct(value) {
+    if(token == undefined){
+        $("#commentBox").show();
+    }
+    else {  $("#commentBox").hide();}
         //Show current product
         value = +value;
         val = value;
@@ -164,10 +170,7 @@ function  sendComment (){
                     b.insertBefore(newElement, b.children[0]);
                 }
             }
-            if (xhr2.status == 500 && xhr2.readyState == 4) {
-                alert("You should write in rating and text");
-            }
-            if (xhr2.status == 400 && xhr2.readyState == 4) {
+            if (xhr2.status == 500 || xhr2.status == 400 && xhr2.readyState == 4) {
                 alert("You should write in rating and text");
             }
         };
