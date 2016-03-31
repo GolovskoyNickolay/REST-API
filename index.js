@@ -73,8 +73,8 @@ var val, token, startValue;
               a = JSON.parse(a);
               var b = $("#productsList")[0];
               for (var i = 0; i < a.length; i++) {
-                  b.innerHTML += '<button class="btn btn-primary" value="' + i + '" onclick="showProduct(value)">'
-                      + a[i].title + '</button>'
+                  b.innerHTML += '<li  class="active" value="' + i + '" onclick="showProduct(value)">'
+                      +'<a data-toogle="tab" href="#">'+ a[i].title +'</li>';
               }
           }
       };
@@ -189,11 +189,7 @@ $("#enter").click(function () {
 });
 
 
-
-//Оставлять комментарии только после входа или авторизироваться
-//Responsive, зафиксировать звездочки
 //Использовать jQuery, Bootstrap(alert and so on)
-//Вместо кнопок продуктов-закладки
 
 
 
