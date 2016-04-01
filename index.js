@@ -1,11 +1,35 @@
+var val, token, startValue;
+
+window.onload = function() {        //Load the list of products
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
+    xhr.onreadystatechange = function () {
+        if (xhr.status == 200 && xhr.readyState == 4) {
+            var a = xhr.responseText;
+            a = JSON.parse(a);
+            var b = $("#productsList")[0];
+            for (var i = 0; i < a.length; i++) {
+                b.innerHTML += '<li  class="active" value="' + i + '" onclick="showProduct(value)">'
+                    + '<a data-toogle="tab" href="#">' + a[i].title + '</li>';
+            }
+        }
+    };
+    xhr.send();
+    $("#enter").click(function () {
+        $("#authorisationCont").slideToggle("slow");
+        $(this).show();
+
+    });
+};
+
 function doRegistration() {
-    var username = $("#username")[0];
-    var password = $("#password")[0];
+    var username = $("#usernameRegistration")[0];
+    var password = $("#passwordRegistration")[0];
     var obj = {
         username: username.value,
         password: password.value
     };
-   var txt;
+    var txt;
     var jsn = JSON.stringify(obj);
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://smktesting.herokuapp.com/api/register/');
@@ -14,26 +38,22 @@ function doRegistration() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             alert("You have been registered successfully");
-            var showLeaveComment =  $("#leaveComment")[0];
-            showLeaveComment.id = "leaveComment1";
-            $("#commentBox").hide();
-            txt = xhr.responseText;
-            txt = JSON.parse(txt);
+            txt = JSON.parse(xhr.responseText);
             token = txt.token;
         }
                 if(xhr.status == 200 && xhr.readyState == 4){
-                    txt = xhr.responseText;
-                    txt = JSON.parse(txt);
+                    txt = JSON.parse(xhr.responseText);
                     alert(txt.message);
 
 
                 }
         }
 }
+
 function doAuthorisation() {
 
-    var username = $("#usernameA")[0];
-    var password = $("#passwordA")[0];
+    var username = $("#usernameAuthorisation")[0];
+    var password = $("#passwordAuthorisation")[0];
     var obj = {
         username: username.value,
         password: password.value
@@ -44,52 +64,23 @@ function doAuthorisation() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
-
         if (xhr.readyState == 4 && xhr.status == 200) {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
                 alert("Authorisation is successful");
-                var showLeaveComment =  $("#leaveComment")[0];
-                showLeaveComment.id = "leaveComment1";
-                $("#commentBox").hide();
                 $("#authorisationCont").slideToggle("slow");
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
-alert('something go wrong, please, try again');
+                alert(a.message);
+
             }
         }
     }
 
 }
-var val, token, startValue;
-
-        //Load the list of products
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
-      xhr.onreadystatechange = function () {
-          if (xhr.status == 200 && xhr.readyState == 4) {
-              var a = xhr.responseText;
-              a = JSON.parse(a);
-              var b = $("#productsList")[0];
-              for (var i = 0; i < a.length; i++) {
-                  b.innerHTML += '<li  class="active" value="' + i + '" onclick="showProduct(value)">'
-                      +'<a data-toogle="tab" href="#">'+ a[i].title +'</li>';
-              }
-          }
-      };
-      xhr.send();
-
-
-
-
 
 function showProduct(value) {
-    if(token == undefined){
-        $("#commentBox").show();
-    }
-    else {  $("#commentBox").hide();}
-        //Show current product
         value = +value;
         val = value;
         var xhr = new XMLHttpRequest();
@@ -99,7 +90,7 @@ function showProduct(value) {
                 if (xhr.status == 200) {
                     var a = xhr.responseText;
                     var cont = $("#cont")[0];
-                    a = JSON.parse(a);
+                        a = JSON.parse(a);
                         var id = a[value].id;
                         var title = a[value].title;
                         var img = a[value].img;
@@ -140,11 +131,13 @@ function showProduct(value) {
         };
         xhr.send();
     }
+
 function getStarValue(value){
     startValue = +value;
 
 
 }
+
 function  sendComment (){
     var text = $("#text")[0];
     var obj = {
@@ -157,8 +150,18 @@ function  sendComment (){
         xhr2.onreadystatechange = function() {
 
             if (xhr2.status == 401 && xhr2.readyState == 4) {
-                alert("You should sign in at first");
+                $("#sendButton").popover({trigger: 'manual'});
+                $("#sendButton").attr("data-toggle", "popover");
+                $("#sendButton").attr("data-content", "You should sign in at first");
+                $("#sendButton").popover('show');
+
+
+
+
+
             }
+
+
             if (xhr2.status == 200 && xhr2.readyState == 4) {
                 var r = JSON.parse(xhr2.responseText);
                 if (r.success == true) {
@@ -182,14 +185,10 @@ function  sendComment (){
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
 }
-$("#enter").click(function () {
-    $("#authorisationCont").slideToggle("slow");
-    $(this).show();
-
-});
 
 
-//Использовать jQuery, Bootstrap(alert and so on)
+
+
 
 
 
