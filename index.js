@@ -152,8 +152,8 @@ function  sendComment (){
             if (xhr2.status == 401 && xhr2.readyState == 4) {
 
                         sendButton.popover({trigger: "manual"});
+                        sendButton.attr("data-placement", top);
                         sendButton.attr("data-toggle", "popover");
-                        sendButton.attr("data-placement", "bottom");
                         sendButton.attr("data-content", "You should sign in at first");
                         sendButton.popover("show");
 
@@ -168,13 +168,26 @@ function  sendComment (){
                             d = d.toUTCString();
                     newElement.innerHTML = '<div class="list-group-item">' +
                             '<p>'+ username.value + ' at ' + d + '</p>'+
-                        '<p>Rate: ' + startValue + '</p>' +
+                        '<p> + Rate: ' + startValue + '</p>' +
                         '<p>' + text.value + '</p>' + '</div>';
                     b.insertBefore(newElement, b.children[0]);
                 }
             }
             if (xhr2.status == 500 || xhr2.status == 400 && xhr2.readyState == 4) {
-                alert("You should write in rating and text");
+                var textArea =  $("#text");
+                var stars = $("#reviewStars-input");
+
+                textArea.popover({trigger: "manual"});
+                textArea.attr("data-toggle", "popover");
+                textArea.attr("data-content", "You should write something here");
+                textArea.popover("show");
+
+                stars.popover({trigger: "manual"});
+                stars.attr("data-toggle", "popover");
+                stars.attr("data-content", "And chose a mark");
+                stars.popover("show");
+
+
             }
         };
 
@@ -187,10 +200,14 @@ function  sendComment (){
 }
 
 function hidePopover(){
+    var textArea =  $("#text");
+    var stars = $("#reviewStars-input");
     var sendButton = $("#sendButton");
     sendButton.popover('hide');
 
+
 }
+//hide popover; click by jquery;
 
 
 
