@@ -1,4 +1,4 @@
-var val, token, startValue;
+var val, token, startValue, username;
 
 window.onload = function() {        //Load the list of products
     var xhr = new XMLHttpRequest();
@@ -23,7 +23,7 @@ window.onload = function() {        //Load the list of products
 };
 
 function doRegistration() {
-    var username = $("#usernameRegistration")[0];
+        username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
     var obj = {
         username: username.value,
@@ -52,7 +52,7 @@ function doRegistration() {
 
 function doAuthorisation() {
 
-    var username = $("#usernameAuthorisation")[0];
+        username = $("#usernameAuthorisation")[0];
     var password = $("#passwordAuthorisation")[0];
     var obj = {
         username: username.value,
@@ -148,26 +148,26 @@ function  sendComment (){
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr2.onreadystatechange = function() {
-
+            var sendButton = $("#sendButton");
             if (xhr2.status == 401 && xhr2.readyState == 4) {
-                $("#sendButton").popover({trigger: 'manual'});
-                $("#sendButton").attr("data-toggle", "popover");
-                $("#sendButton").attr("data-content", "You should sign in at first");
-                $("#sendButton").popover('show');
 
+                        sendButton.popover({trigger: "manual"});
+                        sendButton.attr("data-toggle", "popover");
+                        sendButton.attr("data-placement", "bottom");
+                        sendButton.attr("data-content", "You should sign in at first");
+                        sendButton.popover("show");
 
-
-
-
-            }
-
+                }
 
             if (xhr2.status == 200 && xhr2.readyState == 4) {
                 var r = JSON.parse(xhr2.responseText);
                 if (r.success == true) {
                     var b = document.getElementById("reviews");
                     var newElement = document.createElement("div");
+                        var d = new Date();
+                            d = d.toUTCString();
                     newElement.innerHTML = '<div class="list-group-item">' +
+                            '<p>'+ username.value + ' at ' + d + '</p>'+
                         '<p>Rate: ' + startValue + '</p>' +
                         '<p>' + text.value + '</p>' + '</div>';
                     b.insertBefore(newElement, b.children[0]);
@@ -184,6 +184,12 @@ function  sendComment (){
     xhr2.setRequestHeader('Content-Type', 'application/json');
     xhr2.setRequestHeader('Authorization', 'Token '+token+'');
     xhr2.send(jsn);
+}
+
+function hidePopover(){
+    var sendButton = $("#sendButton");
+    sendButton.popover('hide');
+
 }
 
 
