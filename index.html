@@ -18,28 +18,13 @@
 
     <!--Products list & registration form-->
     <div class="row">
-        <ul id="productsList" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nav nav-tabs" data-tabs="tabs"></ul>
-        <div id="onReg" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <div class="span6">
+        <ul id="productsList" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 nav nav-tabs" data-tabs="tabs"></ul>
+        <div id="onReg" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-                <span><b>Registration</b></span>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="usernameRegistration"></label>
-                        <input id="usernameRegistration" name="username" type="text" placeholder="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordRegistration"></label>
-                        <input id="passwordRegistration" name="password" type="password" placeholder="password" class="form-control"
-                               required>
-                    </div>
-                    <button type="button" onclick="doRegistration()" class="btn btn-success">Registration</button>
-                </form>
-            </div>
-                <button class="btn btn-info" type="button" id="enter">I've already registered</button>
+            <button type="button" id="wantToSignIn" class="btn btn-info">I want to sign in</button>
+            <button type="button" id="wantToSignUp" class="btn btn-info">I want to sign up</button>
 
-            <div class="span6" id="authorisationCont">
-                <span><b>Authorisation</b></span>
+            <div class="span6" id="signIn">
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="usernameAuthorisation"></label>
@@ -51,9 +36,29 @@
                                required>
                     </div>
 
-                    <button type="button" onclick="doAuthorisation()" class="btn btn-success">Authorisation</button>
+                    <button type="button" onclick="doAuthorisation()" class="btn btn-success">Sign in</button>
                 </form>
             </div>
+
+
+
+
+            <div class="span6" id="signUp">
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="usernameRegistration"></label>
+                        <input id="usernameRegistration" name="username" type="text" placeholder="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordRegistration"></label>
+                        <input id="passwordRegistration" name="password" type="password" placeholder="password" class="form-control"
+                               required>
+                    </div>
+                    <button type="button" onclick="doRegistration()" class="btn btn-success">Sign Up!</button>
+                </form>
+            </div>
+
         </div>
 
     </div>
@@ -91,8 +96,8 @@
 
                 <form>
                     <label for="text"></label>
-                    <textarea class="form-control" id="text" name="text" placeholder="Write your comment" rows="5" cols="43"></textarea>
-                    <button id="sendButton" type="button" onclick="sendComment()" onmouseout="hidePopover()" class="btn btn-success">Send</button>
+                    <textarea class="form-control" id="text" name="text" placeholder="Write your comment" rows="5" cols="43" required></textarea>
+                    <button id="sendButton" type="button" onclick="sendComment()" class="btn btn-success">Send</button>
                 </form>
         </form>
     </div>

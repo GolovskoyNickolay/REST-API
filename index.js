@@ -1,4 +1,4 @@
-var val, token, startValue, username;
+var val, token, starsValue, username;
 
 window.onload = function() {        //Load the list of products
     var xhr = new XMLHttpRequest();
@@ -16,11 +16,21 @@ window.onload = function() {        //Load the list of products
     };
     xhr.send();
     $("#enter").click(function () {
-        $("#authorisationCont").slideToggle("slow");
+        $("#registrationCont").slideToggle("slow");
         $(this).show();
 
     });
 };
+
+$("#wantToSignUp").click(function(){
+    $("#signIn").hide();
+    $("#signUp").toggle('slow');
+
+});
+$("#wantToSignIn").click(function(){
+    $("#signUp").hide();
+    $("#signIn").toggle('slow');
+});
 
 function doRegistration() {
         username = $("#usernameRegistration")[0];
@@ -38,6 +48,7 @@ function doRegistration() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             alert("You have been registered successfully");
+            $("#registrationCont").slideToggle("slow");
             txt = JSON.parse(xhr.responseText);
             token = txt.token;
         }
@@ -68,7 +79,6 @@ function doAuthorisation() {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
                 alert("Authorisation is successful");
-                $("#authorisationCont").slideToggle("slow");
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
@@ -133,7 +143,7 @@ function showProduct(value) {
     }
 
 function getStarValue(value){
-    startValue = +value;
+    starsValue = +value;
 
 
 }
@@ -141,7 +151,7 @@ function getStarValue(value){
 function  sendComment (){
     var text = $("#text")[0];
     var obj = {
-        rate: startValue,
+        rate: starsValue,
         text: text.value
     };
     var jsn = JSON.stringify(obj);
@@ -156,6 +166,9 @@ function  sendComment (){
                         sendButton.attr("data-toggle", "popover");
                         sendButton.attr("data-content", "You should sign in at first");
                         sendButton.popover("show");
+                setTimeout(function(){
+                    sendButton.popover("hide");
+                }, 2000);
 
                 }
 
@@ -168,7 +181,7 @@ function  sendComment (){
                             d = d.toUTCString();
                     newElement.innerHTML = '<div class="list-group-item">' +
                             '<p>'+ username.value + ' at ' + d + '</p>'+
-                        '<p> + Rate: ' + startValue + '</p>' +
+                        '<p> Rate: ' + starsValue + '</p>' +
                         '<p>' + text.value + '</p>' + '</div>';
                     b.insertBefore(newElement, b.children[0]);
                 }
@@ -177,15 +190,19 @@ function  sendComment (){
                 var textArea =  $("#text");
                 var stars = $("#reviewStars-input");
 
-                textArea.popover({trigger: "manual"});
-                textArea.attr("data-toggle", "popover");
-                textArea.attr("data-content", "You should write something here");
-                textArea.popover("show");
+                    textArea.popover({trigger: "manual"});
+                    textArea.attr("data-toggle", "popover");
+                    textArea.attr("data-content", "And write something here");
+                    textArea.popover("show");
 
-                stars.popover({trigger: "manual"});
-                stars.attr("data-toggle", "popover");
-                stars.attr("data-content", "And chose a mark");
-                stars.popover("show");
+                    stars.popover({trigger: "manual"});
+                    stars.attr("data-toggle", "popover");
+                    stars.attr("data-content", "You should chose a mark");
+                    stars.popover("show");
+                    setTimeout(function () {
+                        textArea.popover("hide");
+                        stars.popover("hide");
+                    }, 3500);
 
 
             }
@@ -199,14 +216,6 @@ function  sendComment (){
     xhr2.send(jsn);
 }
 
-function hidePopover(){
-    var textArea =  $("#text");
-    var stars = $("#reviewStars-input");
-    var sendButton = $("#sendButton");
-    sendButton.popover('hide');
-
-
-}
 //hide popover; click by jquery;
 
 

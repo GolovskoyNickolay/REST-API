@@ -8,11 +8,19 @@ body{
     background-color: aliceblue;
 }
 
-#authorisationCont{
+#signUp {
     display: none;
-    margin-top: 60px;
+    margin-top: 55px;
 }
-#enter{
+#signIn {
+    display: none;
+    margin-top: 55px;
+}
+#wantToSignUp {
+    margin: 10px;
+    float: right;
+}
+#wantToSignIn {
     margin: 10px;
     float: right;
 }
