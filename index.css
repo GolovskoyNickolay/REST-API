@@ -7,22 +7,33 @@ body{
 .nav-tabs>li.active>a:hover{
     background-color: aliceblue;
 }
-
+#regForm{
+    float: right;
+    margin-top: -45px;
+}
 #signUp {
     display: none;
     margin-top: 55px;
+    margin-right: 10px;
 }
 #signIn {
     display: none;
     margin-top: 55px;
+    margin-right: 10px;
 }
 #wantToSignUp {
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     float: right;
+    position: relative;
+    z-index: 5;
+
 }
 #wantToSignIn {
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     float: right;
+    position: relative;
+    z-index: 5;
+
 }
 .goods h3{
     border-bottom: 2px solid forestgreen;
@@ -44,6 +55,11 @@ body{
 }
 .list-group-item{
     margin-top: 10px;
+}
+#productsList{
+    margin-top: -40px;
+    position: relative;
+    z-index: 1;
 }
 #productsList button{
     margin: 5px;

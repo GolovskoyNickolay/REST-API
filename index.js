@@ -15,21 +15,16 @@ window.onload = function() {        //Load the list of products
         }
     };
     xhr.send();
-    $("#enter").click(function () {
-        $("#registrationCont").slideToggle("slow");
-        $(this).show();
-
-    });
 };
 
 $("#wantToSignUp").click(function(){
     $("#signIn").hide();
-    $("#signUp").toggle('slow');
+    $("#signUp").toggle('explode');
 
 });
 $("#wantToSignIn").click(function(){
     $("#signUp").hide();
-    $("#signIn").toggle('slow');
+    $("#signIn").toggle('explode');
 });
 
 function doRegistration() {
@@ -48,7 +43,7 @@ function doRegistration() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             alert("You have been registered successfully");
-            $("#registrationCont").slideToggle("slow");
+            $("#signUp").slideToggle("slow");
             txt = JSON.parse(xhr.responseText);
             token = txt.token;
         }
@@ -79,6 +74,7 @@ function doAuthorisation() {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
                 alert("Authorisation is successful");
+                $("#signIn").toggle('slow');
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
@@ -159,15 +155,16 @@ function  sendComment (){
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr2.onreadystatechange = function() {
             var sendButton = $("#sendButton");
+            var wantToSignIn = $("#wantToSignIn");
             if (xhr2.status == 401 && xhr2.readyState == 4) {
 
-                        sendButton.popover({trigger: "manual"});
-                        sendButton.attr("data-placement", top);
-                        sendButton.attr("data-toggle", "popover");
-                        sendButton.attr("data-content", "You should sign in at first");
-                        sendButton.popover("show");
+                        wantToSignIn.popover({trigger: "manual"});
+                        wantToSignIn.attr("data-toggle", "popover");
+                        wantToSignIn.attr('data-placement', 'left');
+                        wantToSignIn.attr("data-content", "You should sign in or sign up");
+                        wantToSignIn.popover("show");
                 setTimeout(function(){
-                    sendButton.popover("hide");
+                    wantToSignIn.popover("hide");
                 }, 2000);
 
                 }
@@ -216,7 +213,7 @@ function  sendComment (){
     xhr2.send(jsn);
 }
 
-//hide popover; click by jquery;
+//popover
 
 
 
