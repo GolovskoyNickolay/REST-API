@@ -20,6 +20,9 @@ window.onload = function() {        //Load the list of products
 $("#wantToSignUp").click(function(){
     $("#signIn").hide();
     $("#signUp").toggle('explode');
+    setTimeout(function(){
+        $("#wantToSignUp").popover('hide');
+    },0);
 
 });
 $("#wantToSignIn").click(function(){
@@ -27,7 +30,7 @@ $("#wantToSignIn").click(function(){
     $("#signIn").toggle('explode');
 });
 
-function doRegistration() {
+function doSignUp() {
         username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
     var obj = {
@@ -42,21 +45,29 @@ function doRegistration() {
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
-            alert("You have been registered successfully");
             $("#signUp").slideToggle("slow");
+            setTimeout(function(){
+            $("#signUpSuccess").toggle('slow');
+            }, 300);
+            setTimeout(function(){
+                $("#signUpSuccess").toggle('slow');
+            }, 2500);
             txt = JSON.parse(xhr.responseText);
             token = txt.token;
         }
                 if(xhr.status == 200 && xhr.readyState == 4){
                     txt = JSON.parse(xhr.responseText);
-                    alert(txt.message);
+                    $("#signUpFailure").toggle('slow');
+                    setTimeout(function(){
+                        $("#signUpFailure").toggle('slow');
+                    }, 2500);
 
 
                 }
         }
 }
 
-function doAuthorisation() {
+function doSignIn() {
 
         username = $("#usernameAuthorisation")[0];
     var password = $("#passwordAuthorisation")[0];
@@ -73,12 +84,19 @@ function doAuthorisation() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var a = JSON.parse(xhr.responseText);
             if (a.success == true) {
-                alert("Authorisation is successful");
                 $("#signIn").toggle('slow');
+                $("#signInSuccess").toggle('slow');
+               setTimeout(function(){
+                   $("#signInSuccess").toggle('slow');
+               }, 2500);
+
                 token = a.token; //take token into the global scope for sending comments
             }
             else{
-                alert(a.message);
+                $("#signInFailure").toggle('slow');
+                setTimeout(function(){
+                    $("#signInFailure").toggle('slow');
+                }, 2500);
 
             }
         }
@@ -155,18 +173,17 @@ function  sendComment (){
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr2.onreadystatechange = function() {
             var sendButton = $("#sendButton");
-            var wantToSignIn = $("#wantToSignIn");
+            var wantToSignUp = $("#wantToSignUp");
             if (xhr2.status == 401 && xhr2.readyState == 4) {
-
-                        wantToSignIn.popover({trigger: "manual"});
-                        wantToSignIn.attr("data-toggle", "popover");
-                        wantToSignIn.attr('data-placement', 'left');
-                        wantToSignIn.attr("data-content", "You should sign in or sign up");
-                        wantToSignIn.popover("show");
+                
+                        wantToSignUp.attr('data-container', 'body');
+                        wantToSignUp.attr('data-toggle', 'popover');
+                        wantToSignUp.attr('data-placement', 'bottom');
+                        wantToSignUp.attr('data-content', 'You should sign in or sign up');
+                        wantToSignUp.popover('show');
                 setTimeout(function(){
-                    wantToSignIn.popover("hide");
-                }, 2000);
-
+                    wantToSignUp.popover('hide');
+                }, 2500);
                 }
 
             if (xhr2.status == 200 && xhr2.readyState == 4) {
@@ -213,7 +230,6 @@ function  sendComment (){
     xhr2.send(jsn);
 }
 
-//popover
 
 
 

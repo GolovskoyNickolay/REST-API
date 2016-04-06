@@ -18,10 +18,16 @@
 
     <!--Products list & registration form-->
     <div class="row">
-        <button type="button" id="wantToSignIn" class="btn btn-info">Sign in</button>
-        <button type="button" id="wantToSignUp" class="btn btn-info">Sign up</button>
+
+            <button type="button" id="wantToSignIn" class="btn btn-info">Sign in</button>
+            <button type="button" id="wantToSignUp" class="btn btn-info">Sign up</button>
 
         <ul id="productsList" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nav nav-tabs" data-tabs="tabs"></ul>
+
+        <div id="signInSuccess" class="alert alert-success" role="alert"><strong>Well done! </strong>You've been signed in successfully.</div>
+        <div id="signUpSuccess" class="alert alert-success" role="alert"><strong>Well done! </strong>You've been signed up successfully.</div>
+        <div id="signUpFailure" class="alert alert-warning" role="alert"><strong>Oops! </strong>User with such name already exists.</div>
+        <div id="signInFailure" class="alert alert-warning" role="alert"><strong>Oops! </strong>User or password are invalid.</div>
 
 
 
@@ -39,7 +45,7 @@
                                required>
                     </div>
 
-                    <button type="button" onclick="doAuthorisation()" class="btn btn-success">Sign in</button>
+                    <button type="button" onclick="doSignIn()" class="btn btn-success">Sign in</button>
                 </form>
             </div>
 
@@ -58,7 +64,7 @@
                         <input id="passwordRegistration" name="password" type="password" placeholder="password" class="form-control"
                                required>
                     </div>
-                    <button type="button" onclick="doRegistration()" class="btn btn-success">Sign Up!</button>
+                    <button type="button" onclick="doSignUp()" class="btn btn-success">Sign Up!</button>
                 </form>
             </div>
 
@@ -70,7 +76,7 @@
             <div class="row" id="PCR">
 
             <div id="cont" class="col-lg-4 col-md-6 col-sm-6 col-xs-12"></div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 alert alert-info" id="commentBox">If you want leave comment, please, register or sign in</div>
+
 
              <div id="leaveComment" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 
