@@ -1,6 +1,6 @@
 var val, token, starsValue, username;
 
-window.onload = function() {        //Load the list of products
+window.onload = function() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
     xhr.onreadystatechange = function () {
@@ -15,7 +15,7 @@ window.onload = function() {        //Load the list of products
         }
     };
     xhr.send();
-};
+}; //Load the list of products
 
 $("#wantToSignUp").click(function(){
     $("#signIn").hide();
@@ -105,8 +105,12 @@ function doSignIn() {
 }
 
 function showProduct(value) {
-        value = +value;
-        val = value;
+        var tt = document.getElementById("text");
+            tt.value = "";
+            $(".star").css('background', 'none');
+            $('input').attr('checked',false);
+        value = +value; //get value from product's list
+        val = value;// other value for reviews
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
         xhr.onreadystatechange = function () {
