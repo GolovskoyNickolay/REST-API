@@ -4,7 +4,9 @@ body{
     border: solid 1px black;
     background-color: aliceblue;
 }
+@media handheld {
 
+}
 .alert{
     margin: 5% 20% 0 20%;
     display: none;
@@ -31,14 +33,14 @@ body{
     margin: 10px 10px 0 10px;
     float: right;
     position: relative;
-    z-index: 5;
+    z-index: 1;
 
 }
 #wantToSignIn {
     margin: 10px 10px 0 10px;
     float: right;
     position: relative;
-    z-index: 5;
+    z-index: 1;
 
 }
 .goods h3{
@@ -71,7 +73,7 @@ body{
 #productsList{
     margin-top: -40px;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 #productsList button{
     margin: 5px;
@@ -86,6 +88,7 @@ body{
 #text{
     resize: vertical;
     max-height: 150px;
+
 }
 
 

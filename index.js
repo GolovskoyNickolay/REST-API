@@ -29,6 +29,16 @@ $("#wantToSignIn").click(function(){
     $("#signUp").hide();
     $("#signIn").toggle('explode');
 });
+$("#text").click(function(){
+    setTimeout(function(){
+        $("#text").popover('hide');
+    },0);
+});
+$("#reviewStars-input").click(function(){
+    $("#reviewStars-input").popover('hide');
+});
+
+
 
 function doSignUp() {
         username = $("#usernameRegistration")[0];
@@ -167,7 +177,44 @@ function getStarValue(value){
 }
 
 function  sendComment (){
-    var text = $("#text")[0];
+    var stars = $("#reviewStars-input");
+    var text = document.getElementById("text");
+
+    if(username == undefined){
+        var wantToSignUp = $("#wantToSignUp");
+        wantToSignUp.attr('data-container', 'body');
+        wantToSignUp.attr('data-placement', 'bottom');
+        wantToSignUp.attr('data-toggle', 'popover');
+        wantToSignUp.attr('data-content', 'You should sign in or sign up');
+        wantToSignUp.popover('show');
+        setTimeout(function(){
+            wantToSignUp.popover('hide');
+        }, 2500);
+
+    }
+    if (username !== undefined && text.value == undefined){
+        text.attr("data-toggle", "popover");
+        text.attr('data-placement', 'bottom');
+        text.attr("data-content", "Write something here");
+        text.popover("show");
+        setTimeout(function () {
+            text.popover("hide");
+        }, 2500);
+    }
+    if( username !== undefined && starsValue == undefined){
+        stars.attr("data-toggle", "popover");
+        stars.attr('data-placement', 'top');
+        stars.attr("data-content", "You should chose a mark");
+        stars.popover("show");
+
+        setTimeout(function () {
+
+            stars.popover("hide");
+        }, 2500);
+
+
+    }
+    else {
     var obj = {
         rate: starsValue,
         text: text.value
@@ -176,63 +223,34 @@ function  sendComment (){
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr2.onreadystatechange = function() {
-            var sendButton = $("#sendButton");
-            var wantToSignUp = $("#wantToSignUp");
-            if (xhr2.status == 401 && xhr2.readyState == 4) {
-                
-                        wantToSignUp.attr('data-container', 'body');
-                        wantToSignUp.attr('data-toggle', 'popover');
-                        wantToSignUp.attr('data-placement', 'bottom');
-                        wantToSignUp.attr('data-content', 'You should sign in or sign up');
-                        wantToSignUp.popover('show');
-                setTimeout(function(){
-                    wantToSignUp.popover('hide');
-                }, 2500);
-                }
-
-            if (xhr2.status == 200 && xhr2.readyState == 4) {
-                var r = JSON.parse(xhr2.responseText);
-                if (r.success == true) {
-                    var b = document.getElementById("reviews");
-                    var newElement = document.createElement("div");
+            if (xhr2.readyState == 4) {
+                if (xhr2.status == 200) {
+                    var r = JSON.parse(xhr2.responseText);
+                    if (r.success == true) {
+                        var b = document.getElementById("reviews");
+                        var newElement = document.createElement("div");
                         var d = new Date();
-                            d = d.toUTCString();
-                    newElement.innerHTML = '<div class="list-group-item">' +
-                            '<p>'+ username.value + ' at ' + d + '</p>'+
-                        '<p> Rate: ' + starsValue + '</p>' +
-                        '<p>' + text.value + '</p>' + '</div>';
-                    b.insertBefore(newElement, b.children[0]);
+                        d = d.toUTCString();
+                        newElement.innerHTML = '<div class="list-group-item">' +
+                            '<p>' + username.value + ' at ' + d + '</p>' +
+                            '<p> Rate: ' + starsValue + '</p>' +
+                            '<p>' + text.value + '</p>' + '</div>';
+                        b.insertBefore(newElement, b.children[0]);
+                    }
                 }
             }
-            if (xhr2.status == 500 || xhr2.status == 400 && xhr2.readyState == 4) {
-                var textArea =  $("#text");
-                var stars = $("#reviewStars-input");
-
-                    textArea.popover({trigger: "manual"});
-                    textArea.attr("data-toggle", "popover");
-                    textArea.attr("data-content", "And write something here");
-                    textArea.popover("show");
-
-                    stars.popover({trigger: "manual"});
-                    stars.attr("data-toggle", "popover");
-                    stars.attr("data-content", "You should chose a mark");
-                    stars.popover("show");
-                    setTimeout(function () {
-                        textArea.popover("hide");
-                        stars.popover("hide");
-                    }, 3500);
-
-
-            }
+            xhr2.setRequestHeader('Content-Type', 'application/json');
+            xhr2.setRequestHeader('Authorization', 'Token '+token+'');
+            xhr2.send(jsn);
         };
+        }
 
 
 
 
-    xhr2.setRequestHeader('Content-Type', 'application/json');
-    xhr2.setRequestHeader('Authorization', 'Token '+token+'');
-    xhr2.send(jsn);
 }
+
+//responsive popover(sendComment); textarea
 
 
 
