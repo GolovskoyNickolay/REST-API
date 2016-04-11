@@ -29,17 +29,18 @@ $("#wantToSignIn").click(function(){
     $("#signUp").hide();
     $("#signIn").toggle('explode');
 });
+$("#reviewsStars-input").click(function(){
+    setTimeout(function () {
+        $("#reviewsStars-input").popover("hide");
+
+    }, 0);
+});
 $("#text").click(function(){
-    setTimeout(function(){
-        $("#text").popover('hide');
-    },0);
+    setTimeout(function () {
+        $("#text").popover("hide");
+
+    }, 0);
 });
-$("#reviewStars-input").click(function(){
-    $("#reviewStars-input").popover('hide');
-});
-
-
-
 function doSignUp() {
         username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
@@ -177,44 +178,7 @@ function getStarValue(value){
 }
 
 function  sendComment (){
-    var stars = $("#reviewStars-input");
-    var text = document.getElementById("text");
-
-    if(username == undefined){
-        var wantToSignUp = $("#wantToSignUp");
-        wantToSignUp.attr('data-container', 'body');
-        wantToSignUp.attr('data-placement', 'bottom');
-        wantToSignUp.attr('data-toggle', 'popover');
-        wantToSignUp.attr('data-content', 'You should sign in or sign up');
-        wantToSignUp.popover('show');
-        setTimeout(function(){
-            wantToSignUp.popover('hide');
-        }, 2500);
-
-    }
-    if (username !== undefined && text.value == undefined){
-        text.attr("data-toggle", "popover");
-        text.attr('data-placement', 'bottom');
-        text.attr("data-content", "Write something here");
-        text.popover("show");
-        setTimeout(function () {
-            text.popover("hide");
-        }, 2500);
-    }
-    if( username !== undefined && starsValue == undefined){
-        stars.attr("data-toggle", "popover");
-        stars.attr('data-placement', 'top');
-        stars.attr("data-content", "You should chose a mark");
-        stars.popover("show");
-
-        setTimeout(function () {
-
-            stars.popover("hide");
-        }, 2500);
-
-
-    }
-    else {
+    var text = $("#text")[0];
     var obj = {
         rate: starsValue,
         text: text.value
@@ -223,6 +187,44 @@ function  sendComment (){
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
         xhr2.onreadystatechange = function() {
+            var wantToSignUp = $("#wantToSignUp");
+            var textArea = $("#text");
+            var stars = $("#reviewStars-input");
+
+            if (xhr2.readyState == 4) {
+                if (xhr2.status == 401) {
+
+                    wantToSignUp.attr('data-container', 'body');
+                    wantToSignUp.attr('data-toggle', 'popover');
+                    wantToSignUp.attr('data-placement', 'bottom');
+                    wantToSignUp.attr('data-content', 'You should sign in or sign up');
+                    wantToSignUp.popover('show');
+                    setTimeout(function () {
+                        wantToSignUp.popover('hide');
+                    }, 2000);
+                }
+            }
+
+            if (xhr2.readyState == 4) {
+                if(xhr2.status == 500 || xhr2.status == 400) {
+
+                    textArea.attr("data-toggle", "popover");
+                    textArea.attr("data-placement", "bottom");
+                    textArea.attr("data-content", "Write something here");
+                    textArea.popover("show");
+
+                    stars.attr("data-toggle", "popover");
+                    stars.attr("data-placement", "top");
+                    stars.attr("data-content", "You should chose a mark");
+                    stars.popover("show");
+
+                    setTimeout(function () {
+                        textArea.popover("hide");
+                        stars.popover("hide");
+                    }, 3500);
+
+                }
+            }
             if (xhr2.readyState == 4) {
                 if (xhr2.status == 200) {
                     var r = JSON.parse(xhr2.responseText);
@@ -239,18 +241,15 @@ function  sendComment (){
                     }
                 }
             }
-            xhr2.setRequestHeader('Content-Type', 'application/json');
-            xhr2.setRequestHeader('Authorization', 'Token '+token+'');
-            xhr2.send(jsn);
         };
-        }
 
 
 
 
+    xhr2.setRequestHeader('Content-Type', 'application/json');
+    xhr2.setRequestHeader('Authorization', 'Token '+token+'');
+    xhr2.send(jsn);
 }
-
-//responsive popover(sendComment); textarea
 
 
 
