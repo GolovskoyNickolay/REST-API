@@ -41,6 +41,7 @@ $("#text").click(function(){
 
     }, 0);
 });
+
 function doSignUp() {
         username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
@@ -225,7 +226,7 @@ function  sendComment (){
 
                 }
             }
-            if (xhr2.readyState == 4) {
+            if (xhr2.readyState == 4 ) {
                 if (xhr2.status == 200) {
                     var r = JSON.parse(xhr2.responseText);
                     if (r.success == true) {
