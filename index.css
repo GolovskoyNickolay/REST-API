@@ -4,9 +4,7 @@ body{
     border: solid 1px black;
     background-color: aliceblue;
 }
-@media handheld {
 
-}
 .alert{
     margin: 5% 20% 0 20%;
     display: none;

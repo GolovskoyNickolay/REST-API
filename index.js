@@ -239,6 +239,7 @@ function  sendComment (){
                             '<p> Rate: ' + starsValue + '</p>' +
                             '<p>' + text.value + '</p>' + '</div>';
                         b.insertBefore(newElement, b.children[0]);
+                        $("#reviews").find("div:first-child").css("background-color", "green");
                     }
                 }
             }
