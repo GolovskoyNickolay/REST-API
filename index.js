@@ -239,7 +239,13 @@ function  sendComment (){
                             '<p> Rate: ' + starsValue + '</p>' +
                             '<p>' + text.value + '</p>' + '</div>';
                         b.insertBefore(newElement, b.children[0]);
-                        $("#reviews").find("div:first-child").css("background-color", "green");
+                        $("#reviews").find("div:first-child").css("background-color", "aquamarine");
+                        setTimeout(function(){
+                            $("#reviews").find("div:first-child").css("background-color", "white");
+                        },2000);
+                        setTimeout(function(){
+                            $("#reviews").find("div:first-child").removeAttr("background-color");
+                        },2500);
                     }
                 }
             }
