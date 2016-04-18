@@ -1,6 +1,6 @@
 var val, token, starsValue, username;
 
-window.onload = function() {
+window.onload = function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
     xhr.onreadystatechange = function () {
@@ -17,25 +17,29 @@ window.onload = function() {
     xhr.send();
 }; //Load the list of products
 
-$("#wantToSignUp").click(function(){
+$("#wantToSignUp").click(function () {
     $("#signIn").hide();
     $("#signUp").toggle('explode');
-    setTimeout(function(){
+    setTimeout(function () {
         $("#wantToSignUp").popover('hide');
-    },0);
+    }, 0);
 
 });
-$("#wantToSignIn").click(function(){
+$("#wantToSignIn").click(function () {
     $("#signUp").hide();
     $("#signIn").toggle('explode');
+    setTimeout(function () {
+        $("#wantToSignIn").popover('hide');
+    }, 0);
+
 });
-$("#reviewsStars-input").click(function(){
+$("#reviewsStars-input").click(function () {
     setTimeout(function () {
         $("#reviewsStars-input").popover("hide");
 
     }, 0);
 });
-$("#text").click(function(){
+$("#text").click(function () {
     setTimeout(function () {
         $("#text").popover("hide");
 
@@ -43,7 +47,7 @@ $("#text").click(function(){
 });
 
 function doSignUp() {
-        username = $("#usernameRegistration")[0];
+    username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
     var obj = {
         username: username.value,
@@ -58,30 +62,31 @@ function doSignUp() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 201) {
             $("#signUp").slideToggle("slow");
-            setTimeout(function(){
-            $("#signUpSuccess").toggle('slow');
+            setTimeout(function () {
+                $("#signUpSuccess").toggle('slow');
             }, 300);
-            setTimeout(function(){
+            setTimeout(function () {
                 $("#signUpSuccess").toggle('slow');
             }, 2500);
             txt = JSON.parse(xhr.responseText);
             token = txt.token;
         }
-                if(xhr.status == 200 && xhr.readyState == 4){
-                    txt = JSON.parse(xhr.responseText);
-                    $("#signUpFailure").toggle('slow');
-                    setTimeout(function(){
-                        $("#signUpFailure").toggle('slow');
-                    }, 2500);
+        if (xhr.status == 200 && xhr.readyState == 4) {
+            txt = JSON.parse(xhr.responseText);
+            $("#signUp").slideToggle("slow");
+            $("#signUpFailure").toggle('slow');
+            setTimeout(function () {
+                $("#signUpFailure").toggle('slow');
+            }, 2500);
 
 
-                }
         }
+    }
 }
 
 function doSignIn() {
 
-        username = $("#usernameAuthorisation")[0];
+    username = $("#usernameAuthorisation")[0];
     var password = $("#passwordAuthorisation")[0];
     var obj = {
         username: username.value,
@@ -98,15 +103,16 @@ function doSignIn() {
             if (a.success == true) {
                 $("#signIn").toggle('slow');
                 $("#signInSuccess").toggle('slow');
-               setTimeout(function(){
-                   $("#signInSuccess").toggle('slow');
-               }, 2500);
+                setTimeout(function () {
+                    $("#signInSuccess").toggle('slow');
+                }, 2500);
 
                 token = a.token; //take token into the global scope for sending comments
             }
-            else{
+            else {
+                $("#signIn").toggle('slow');
                 $("#signInFailure").toggle('slow');
-                setTimeout(function(){
+                setTimeout(function () {
                     $("#signInFailure").toggle('slow');
                 }, 2500);
 
@@ -117,68 +123,67 @@ function doSignIn() {
 }
 
 function showProduct(value) {
-        var tt = document.getElementById("text");
-            tt.value = "";
-            $(".star").css('background', 'none');
-            $('input').attr('checked',false);
-        value = +value; //get value from product's list
-        val = value;// other value for reviews
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    var a = xhr.responseText;
-                    var cont = $("#cont")[0];
+    var tt = document.getElementById("text");
+    tt.value = "";
+    $(".star").css('background', 'none');
+    $('input').attr('checked', false);
+    value = +value; //get value from product's list
+    val = value;// other value for reviews
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://smktesting.herokuapp.com/api/products/');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var a = xhr.responseText;
+                var cont = $("#cont")[0];
+                a = JSON.parse(a);
+                var id = a[value].id;
+                var title = a[value].title;
+                var img = a[value].img;
+                var text1 = a[value].text;
+                cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3>' + title +
+                    '</h3>' + '<img " src="http://smktesting.herokuapp.com/static/' + img + '">' +
+                    '<article>' + 'Product description:' + '<br>' + text1 + '</article>' + '</div>';
+
+
+                //Comments
+                val = val + 1;
+                var xhr1 = new XMLHttpRequest();
+                xhr1.open('GET', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
+                xhr1.onreadystatechange = function () {
+                    if (xhr1.readyState == 4 && xhr1.status == 200) {
+                        var a = xhr1.responseText;
                         a = JSON.parse(a);
-                        var id = a[value].id;
-                        var title = a[value].title;
-                        var img = a[value].img;
-                        var text1 = a[value].text;
-                        cont.innerHTML = '<div id="' + id + '" class="goods">' + '<h3>' + title +
-                            '</h3>' + '<img " src="http://smktesting.herokuapp.com/static/' + img + '">' +
-                            '<article>'+'Product description:'+'<br>' + text1 + '</article>' +'</div>';
-
-
-
-                    //Comments
-                    val = val + 1;
-                    var xhr1 = new XMLHttpRequest();
-                    xhr1.open('GET', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
-                    xhr1.onreadystatechange = function () {
-                        if (xhr1.readyState == 4 && xhr1.status == 200) {
-                            var a = xhr1.responseText;
-                            a = JSON.parse(a);
-                            var b = document.getElementById("reviews");
-                                     b.innerHTML = "";
-                            var list = $("form")[2];
-                                list.id = "list";//change id for seeing rating
-                            for (var i = a.length - 1; i > 0; i--) {
-                                var rate = a[i].rate;
-                                var text = a[i].text;
-                                var create =a[i].created_by.username + ' at ' +  a[i].created_at;
-                                b.innerHTML +='<div class="list-group-item">' +'<p>' + create + '</p>' +
-                                    '<p>Rate: ' + rate + '</p>' +
-                                    '<p>' + text + '</p>' + '</div>';
-                            }
-
+                        var b = document.getElementById("reviews");
+                        b.innerHTML = "";
+                        var list = $("form")[2];
+                        list.id = "list";//change id for seeing rating
+                        for (var i = a.length - 1; i > 0; i--) {
+                            var rate = a[i].rate;
+                            var text = a[i].text;
+                            var create = a[i].created_by.username + ' at ' + a[i].created_at;
+                            b.innerHTML += '<div class="list-group-item">' + '<p>' + create + '</p>' +
+                                '<p>Rate: ' + rate + '</p>' +
+                                '<p>' + text + '</p>' + '</div>';
                         }
 
-                    };
-                    xhr1.send();
-                }
-            }
-        };
-        xhr.send();
-    }
+                    }
 
-function getStarValue(value){
+                };
+                xhr1.send();
+            }
+        }
+    };
+    xhr.send();
+}
+
+function getStarValue(value) {
     starsValue = +value;
 
 
 }
 
-function  sendComment (){
+function sendComment() {
     var text = $("#text")[0];
     var obj = {
         rate: starsValue,
@@ -186,76 +191,98 @@ function  sendComment (){
     };
     var jsn = JSON.stringify(obj);
     var xhr2 = new XMLHttpRequest();
-    xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/'+val+'');
-        xhr2.onreadystatechange = function() {
-            var wantToSignUp = $("#wantToSignUp");
-            var textArea = $("#text");
-            var stars = $("#reviewStars-input");
+    xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
+    xhr2.onreadystatechange = function () {
+        var wantToSignUp = $("#wantToSignUp");
+        var wantToSignIn = $("#wantToSignIn");
+        var textArea = $("#text");
+        var stars = $("#reviewStars-input");
 
-            if (xhr2.readyState == 4) {
-                if (xhr2.status == 401) {
+        if (xhr2.readyState == 4) {
+            if (xhr2.status == 401) {
+                wantToSignUp.attr({
+                    'data-container': 'body',
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': 'You should sign up'
+                });
+                wantToSignUp.popover('show');
 
-                    wantToSignUp.attr('data-container', 'body');
-                    wantToSignUp.attr('data-toggle', 'popover');
-                    wantToSignUp.attr('data-placement', 'bottom');
-                    wantToSignUp.attr('data-content', 'You should sign in or sign up');
-                    wantToSignUp.popover('show');
-                    setTimeout(function () {
-                        wantToSignUp.popover('hide');
-                    }, 2000);
-                }
+                wantToSignIn.attr({
+                    'data-container': 'body',
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': 'or sign in'
+                });
+                setTimeout(function () {
+                    wantToSignIn.popover('show');
+                }, 1000);
+
+                setTimeout(function () {
+                    wantToSignUp.popover('hide');
+                    wantToSignIn.popover('hide');
+                }, 2000);
             }
+        }//if unauthorized
 
-            if (xhr2.readyState == 4) {
-                if(xhr2.status == 500 || xhr2.status == 400) {
-
-                    textArea.attr("data-toggle", "popover");
-                    textArea.attr("data-placement", "bottom");
-                    textArea.attr("data-content", "Write something here");
+        if (xhr2.readyState == 4) {
+            if (xhr2.status == 500 || xhr2.status == 400) {
+                if (text.value == "") {
+                    textArea.attr({
+                        'data-toggle': 'popover',
+                        'data-placement': 'bottom',
+                        'data-content': 'Write something here'
+                    });
                     textArea.popover("show");
-
-                    stars.attr("data-toggle", "popover");
-                    stars.attr("data-placement", "top");
-                    stars.attr("data-content", "You should chose a mark");
-                    stars.popover("show");
-
                     setTimeout(function () {
                         textArea.popover("hide");
+                    }, 3000);
+                }
+
+                if (starsValue == undefined) {
+                    stars.attr({
+                        'data-toggle': 'popover',
+                        'data-placement': 'top',
+                        'data-content': 'You should chose a mark'
+                    });
+                    stars.popover("show");
+                    setTimeout(function () {
                         stars.popover("hide");
-                    }, 3500);
+                    }, 3000);
 
                 }
+
+
             }
-            if (xhr2.readyState == 4 ) {
-                if (xhr2.status == 200) {
-                    var r = JSON.parse(xhr2.responseText);
-                    if (r.success == true) {
-                        var b = document.getElementById("reviews");
-                        var newElement = document.createElement("div");
-                        var d = new Date();
-                        d = d.toUTCString();
-                        newElement.innerHTML = '<div class="list-group-item">' +
-                            '<p>' + username.value + ' at ' + d + '</p>' +
-                            '<p> Rate: ' + starsValue + '</p>' +
-                            '<p>' + text.value + '</p>' + '</div>';
-                        b.insertBefore(newElement, b.children[0]);
-                        $("#reviews").find("div:first-child").css("background-color", "aquamarine");
-                        setTimeout(function(){
-                            $("#reviews").find("div:first-child").css("background-color", "white");
-                        },2000);
-                        setTimeout(function(){
-                            $("#reviews").find("div:first-child").removeAttr("background-color");
-                        },2500);
-                    }
+        }
+        if (xhr2.readyState == 4) {
+            if (xhr2.status == 200) {
+                var r = JSON.parse(xhr2.responseText);
+                if (r.success == true) {
+                    var b = document.getElementById("reviews");
+                    var newElement = document.createElement("div");
+                    var d = new Date();
+                    d = d.toUTCString();
+                    newElement.innerHTML = '<div class="list-group-item">' +
+                        '<p>' + username.value + ' at ' + d + '</p>' +
+                        '<p> Rate: ' + starsValue + '</p>' +
+                        '<p>' + text.value + '</p>' + '</div>';
+                    b.insertBefore(newElement, b.children[0]);
+                    $("#reviews").find("div:first-child").css("background-color", "aquamarine");
+                    setTimeout(function () {
+                        $("#reviews").find("div:first-child").css("background-color", "white");
+                    }, 2000);
+                    setTimeout(function () {
+                        $("#reviews").find("div:first-child").removeAttr("background-color");
+                    }, 2500);
                 }
             }
-        };
-
-
+        }
+    };
 
 
     xhr2.setRequestHeader('Content-Type', 'application/json');
-    xhr2.setRequestHeader('Authorization', 'Token '+token+'');
+    xhr2.setRequestHeader('Authorization', 'Token ' + token + '');
     xhr2.send(jsn);
 }
 
