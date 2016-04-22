@@ -19,6 +19,17 @@ body{
     float: right;
     margin-top: -45px;
 }
+#prodList {
+    width: 35%;
+    padding-top: 5px;
+}
+
+#buttonExit{
+    display: none;
+    float: right;
+
+
+}
 #signUp {
     display: none;
     margin-top: 55px;

@@ -45,6 +45,12 @@ $("#text").click(function () {
 
     }, 0);
 });
+$("#buttonExit").click(function(){
+        $("#yourName").hide();
+    $("#buttonExit").hide();
+    token = undefined;
+
+});
 
 function doSignUp() {
     username = $("#usernameRegistration")[0];
@@ -60,26 +66,26 @@ function doSignUp() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 201) {
-            $("#signUp").slideToggle("slow");
-            setTimeout(function () {
-                $("#signUpSuccess").toggle('slow');
-            }, 300);
-            setTimeout(function () {
-                $("#signUpSuccess").toggle('slow');
-            }, 2500);
-            txt = JSON.parse(xhr.responseText);
-            token = txt.token;
+        if (xhr.readyState == 4) {
+            if (xhr.status == 201) {
+                $("#prodList").find("p").remove();
+                $("<p/>", {text: "You enter as " + username.value}).appendTo("#prodList");
+                $("#buttonExit").show();
+                $("#signUp").slideToggle("slow");
+                txt = JSON.parse(xhr.responseText);
+                token = txt.token;
+            }
         }
-        if (xhr.status == 200 && xhr.readyState == 4) {
-            txt = JSON.parse(xhr.responseText);
-            $("#signUp").slideToggle("slow");
-            $("#signUpFailure").toggle('slow');
-            setTimeout(function () {
+        if (xhr.status == 200) {
+            if (xhr.readyState == 4) {
+                txt = JSON.parse(xhr.responseText);
+                $("#signUp").slideToggle("slow");
                 $("#signUpFailure").toggle('slow');
-            }, 2500);
+                setTimeout(function () {
+                    $("#signUpFailure").toggle('slow');
+                }, 2500);
 
-
+            }
         }
     }
 }
@@ -98,18 +104,19 @@ function doSignIn() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var a = JSON.parse(xhr.responseText);
-            if (a.success == true) {
-                $("#signIn").toggle('slow');
-                $("#signInSuccess").toggle('slow');
-                setTimeout(function () {
-                    $("#signInSuccess").toggle('slow');
-                }, 2500);
+        if (xhr.readyState == 4) {
+            if(xhr.status == 200) {
+                var a = JSON.parse(xhr.responseText);
+                if (a.success == true) {
+                    $("#prodList").find("p").remove();
+                    $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
+                    $("#buttonExit").show();
+                    $("#signIn").toggle('slow');
 
-                token = a.token; //take token into the global scope for sending comments
+                    token = a.token; //take token into the global scope for sending comments
+                }
             }
-            else {
+            if(a.success == false ) {
                 $("#signIn").toggle('slow');
                 $("#signInFailure").toggle('slow');
                 setTimeout(function () {
@@ -268,13 +275,11 @@ function sendComment() {
                         '<p> Rate: ' + starsValue + '</p>' +
                         '<p>' + text.value + '</p>' + '</div>';
                     b.insertBefore(newElement, b.children[0]);
-                    $("#reviews").find("div:first-child").css("background-color", "aquamarine");
-                    setTimeout(function () {
-                        $("#reviews").find("div:first-child").css("background-color", "white");
-                    }, 2000);
-                    setTimeout(function () {
-                        $("#reviews").find("div:first-child").removeAttr("background-color");
-                    }, 2500);
+
+
+
+
+
                 }
             }
         }
