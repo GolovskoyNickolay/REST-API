@@ -51,9 +51,29 @@ $("#buttonExit").click(function(){
     token = undefined;
 
 });
+$("#usernameRegistration").click(function() {
+    setTimeout(function () {
+        $("#usernameRegistration").popover('hide');
+    }, 0)
+});
+$("#passwordRegistration").click(function(){
+    setTimeout(function(){
+    $("#passwordRegistration").popover('hide');
+},0);
+});
+$("#usernameAuthorisation").click(function() {
+    setTimeout(function () {
+        $("#usernameAuthorisation").popover('hide');
+    }, 0)
+});
+$("#passwordAuthorisation").click(function(){
+    setTimeout(function(){
+        $("#passwordAuthorisation").popover('hide');
+    },0);
+});
 
 function doSignUp() {
-    username = $("#usernameRegistration")[0];
+        username = $("#usernameRegistration")[0];
     var password = $("#passwordRegistration")[0];
     var obj = {
         username: username.value,
@@ -67,24 +87,48 @@ function doSignUp() {
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
-            if (xhr.status == 201) {
-                $("#prodList").find("p").remove();
-                $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
-                $("#buttonExit").show();
-                $("#signUp").slideToggle("slow");
-                txt = JSON.parse(xhr.responseText);
-                token = txt.token;
+            if (username.value == "" || password.value == "") {
+                var username1 = $("#usernameRegistration");
+                var password1 = $("#passwordRegistration");
+                username1.attr({
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': "Shouldn't be empty"
+                });
+                username1.popover('show');
+                password1.attr({
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': "Shouldn't be empty"
+                });
+                password1.popover('show');
+                setTimeout(function(){
+                    username1.popover('hide');
+                    password1.popover('hide');
+                },2000)
             }
         }
-        if (xhr.status == 200) {
+        if (username.value !== "" || password.value !== ""){
             if (xhr.readyState == 4) {
-                txt = JSON.parse(xhr.responseText);
-                $("#signUp").slideToggle("slow");
-                $("#signUpFailure").toggle('slow');
-                setTimeout(function () {
+                if (xhr.status == 201) {
+                    $("#prodList").find("p").remove();
+                    $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
+                    $("#buttonExit").show();
+                    $("#signUp").slideToggle("slow");
+                    txt = JSON.parse(xhr.responseText);
+                    token = txt.token;
+                }
+            }
+            if (xhr.status == 200) {
+                if (xhr.readyState == 4) {
+                    txt = JSON.parse(xhr.responseText);
+                    $("#signUp").slideToggle("slow");
                     $("#signUpFailure").toggle('slow');
-                }, 2500);
+                    setTimeout(function () {
+                        $("#signUpFailure").toggle('slow');
+                    }, 2500);
 
+                }
             }
         }
     }
@@ -105,28 +149,51 @@ function doSignIn() {
     xhr.send(jsn);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
-            if(xhr.status == 200) {
-                var a = JSON.parse(xhr.responseText);
-                if (a.success == true) {
-                    $("#prodList").find("p").remove();
-                    $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
-                    $("#buttonExit").show();
-                    $("#signIn").toggle('slow');
-
-                    token = a.token; //take token into the global scope for sending comments
-                }
-            }
-            if(a.success == false ) {
-                $("#signIn").toggle('slow');
-                $("#signInFailure").toggle('slow');
+            if (username.value == "" || password.value == "") {
+                var username1 = $("#usernameAuthorisation");
+                var password1 = $("#passwordAuthorisation");
+               username1.attr({
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': "Shouldn't be empty"
+                });
+               username1.popover('show');
+               password1.attr({
+                    'data-toggle': 'popover',
+                    'data-placement': 'bottom',
+                    'data-content': "Shouldn't be empty"
+                });
+               password1.popover('show');
                 setTimeout(function () {
-                    $("#signInFailure").toggle('slow');
-                }, 2500);
+                    username1.popover('hide');
+                    password1.popover('hide');
+                }, 2000)
+            }
+        }
+        if (username.value !== "" || password.value !== "") {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var a = JSON.parse(xhr.responseText);
+                    if (a.success == true) {
+                        $("#prodList").find("p").remove();
+                        $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
+                        $("#buttonExit").show();
+                        $("#signIn").toggle('slow');
 
+                        token = a.token; //take token into the global scope for sending comments
+                    }
+                }
+                if (a.success == false) {
+                    $("#signIn").toggle('slow');
+                    $("#signInFailure").toggle('slow');
+                    setTimeout(function () {
+                        $("#signInFailure").toggle('slow');
+                    }, 2500);
+
+                }
             }
         }
     }
-
 }
 
 function showProduct(value) {
