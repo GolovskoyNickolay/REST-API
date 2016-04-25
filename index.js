@@ -46,7 +46,7 @@ $("#text").click(function () {
     }, 0);
 });
 $("#buttonExit").click(function(){
-        $("#yourName").hide();
+    $("#yourName").hide();
     $("#buttonExit").hide();
     token = undefined;
 
@@ -69,7 +69,7 @@ function doSignUp() {
         if (xhr.readyState == 4) {
             if (xhr.status == 201) {
                 $("#prodList").find("p").remove();
-                $("<p/>", {text: "You enter as " + username.value}).appendTo("#prodList");
+                $("<p/>", {text: "You enter as " + username.value, id: "yourName"}).appendTo("#prodList");
                 $("#buttonExit").show();
                 $("#signUp").slideToggle("slow");
                 txt = JSON.parse(xhr.responseText);
@@ -290,8 +290,6 @@ function sendComment() {
     xhr2.setRequestHeader('Authorization', 'Token ' + token + '');
     xhr2.send(jsn);
 }
-
-
 
 
 
