@@ -265,97 +265,89 @@ function sendComment() {
     };
     var jsn = JSON.stringify(obj);
     var xhr2 = new XMLHttpRequest();
-    xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
-    xhr2.onreadystatechange = function () {
-        var wantToSignUp = $("#wantToSignUp");
-        var wantToSignIn = $("#wantToSignIn");
-        var textArea = $("#text");
-        var stars = $("#reviewStars-input");
+    var wantToSignUp = $("#wantToSignUp");
+    var wantToSignIn = $("#wantToSignIn");
+    var textArea = $("#text");
+    var stars = $("#reviewStars-input");
 
-        if (xhr2.readyState == 4) {
-            if (xhr2.status == 401) {
-                wantToSignUp.attr({
-                    'data-container': 'body',
+
+    if (username == undefined) {
+        wantToSignUp.attr({
+            'data-container': 'body',
+            'data-toggle': 'popover',
+            'data-placement': 'bottom',
+            'data-content': 'You should sign up'
+        });
+        wantToSignUp.popover('show');
+
+        wantToSignIn.attr({
+            'data-container': 'body',
+            'data-toggle': 'popover',
+            'data-placement': 'bottom',
+            'data-content': 'or sign in'
+        });
+        setTimeout(function () {
+            wantToSignIn.popover('show');
+        }, 1000);
+
+        setTimeout(function () {
+            wantToSignUp.popover('hide');
+            wantToSignIn.popover('hide');
+        }, 2000);
+    }
+
+
+    if (username !== undefined) {
+
+        if (text.value == "" || starsValue == undefined) {
+            if (text.value == "") {
+                textArea.attr({
                     'data-toggle': 'popover',
                     'data-placement': 'bottom',
-                    'data-content': 'You should sign up'
+                    'data-content': 'Write something here'
                 });
-                wantToSignUp.popover('show');
+                textArea.popover("show");
+                setTimeout(function () {
+                    textArea.popover("hide");
+                }, 3000);
+            }
 
-                wantToSignIn.attr({
-                    'data-container': 'body',
+            if (starsValue == undefined) {
+                stars.attr({
                     'data-toggle': 'popover',
-                    'data-placement': 'bottom',
-                    'data-content': 'or sign in'
+                    'data-placement': 'top',
+                    'data-content': 'You should chose a mark'
                 });
+                stars.popover("show");
                 setTimeout(function () {
-                    wantToSignIn.popover('show');
-                }, 1000);
-
-                setTimeout(function () {
-                    wantToSignUp.popover('hide');
-                    wantToSignIn.popover('hide');
-                }, 2000);
-            }
-        }//if unauthorized
-
-        if (xhr2.readyState == 4) {
-            if (xhr2.status == 500 || xhr2.status == 400) {
-                if (text.value == "") {
-                    textArea.attr({
-                        'data-toggle': 'popover',
-                        'data-placement': 'bottom',
-                        'data-content': 'Write something here'
-                    });
-                    textArea.popover("show");
-                    setTimeout(function () {
-                        textArea.popover("hide");
-                    }, 3000);
-                }
-
-                if (starsValue == undefined) {
-                    stars.attr({
-                        'data-toggle': 'popover',
-                        'data-placement': 'top',
-                        'data-content': 'You should chose a mark'
-                    });
-                    stars.popover("show");
-                    setTimeout(function () {
-                        stars.popover("hide");
-                    }, 3000);
-
-                }
-
+                    stars.popover("hide");
+                }, 3000);
 
             }
+
+
         }
-        if (xhr2.readyState == 4) {
-            if (xhr2.status == 200) {
-                var r = JSON.parse(xhr2.responseText);
-                if (r.success == true) {
-                    var b = document.getElementById("reviews");
-                    var newElement = document.createElement("div");
-                    var d = new Date();
-                    d = d.toUTCString();
-                    newElement.innerHTML = '<div class="list-group-item">' +
-                        '<p>' + username.value + ' at ' + d + '</p>' +
-                        '<p> Rate: ' + starsValue + '</p>' +
-                        '<p>' + text.value + '</p>' + '</div>';
-                    b.insertBefore(newElement, b.children[0]);
 
-
-
-
-
-                }
-            }
+        if (text.value !== "" && starsValue !== undefined) {
+            var b = document.getElementById("reviews");
+            var newElement = document.createElement("div");
+            var d = new Date();
+            d = d.toUTCString();
+            newElement.innerHTML = '<div class="list-group-item">' +
+                '<p>' + username.value + ' at ' + d + '</p>' +
+                '<p> Rate: ' + starsValue + '</p>' +
+                '<p>' + text.value + '</p>' + '</div>';
+            b.insertBefore(newElement, b.children[0]);
         }
-    };
+    }
 
+    if (text.value !== "" && starsValue !== undefined) {
+        xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
+            xhr2.setRequestHeader('Content-Type', 'application/json');
+            xhr2.setRequestHeader('Authorization', 'Token ' + token + '');
+            xhr2.send(jsn);
 
-    xhr2.setRequestHeader('Content-Type', 'application/json');
-    xhr2.setRequestHeader('Authorization', 'Token ' + token + '');
-    xhr2.send(jsn);
+    }
 }
 
 
