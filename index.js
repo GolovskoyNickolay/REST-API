@@ -258,7 +258,8 @@ function getStarValue(value) {
 }
 
 function sendComment() {
-    var text = $("#text")[0];
+    var textArea = $("#text");
+    var text = textArea[0];
     var obj = {
         rate: starsValue,
         text: text.value
@@ -267,11 +268,11 @@ function sendComment() {
     var xhr2 = new XMLHttpRequest();
     var wantToSignUp = $("#wantToSignUp");
     var wantToSignIn = $("#wantToSignIn");
-    var textArea = $("#text");
+
     var stars = $("#reviewStars-input");
 
 
-    if (username == undefined) {
+    if (token == undefined) {
         wantToSignUp.attr({
             'data-container': 'body',
             'data-toggle': 'popover',
@@ -297,7 +298,7 @@ function sendComment() {
     }
 
 
-    if (username !== undefined) {
+    if (token !== undefined) {
 
         if (text.value == "" || starsValue == undefined) {
             if (text.value == "") {
@@ -349,6 +350,7 @@ function sendComment() {
 
     }
 }
+//background
 
 
 
