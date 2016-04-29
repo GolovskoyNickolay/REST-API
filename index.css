@@ -2,9 +2,12 @@ body{
     margin-left: 9%;
     margin-right: 9%;
     border: solid 1px black;
-    background-color: aliceblue;
+    background:  url('http://desktopbackgrounds4u.com/wp-content/gallery/powerpoint-background-hd/modern-blue-hd-background.jpg');
+    background-size: 200% auto;
 }
-
+.container-fluid{
+    background: white;
+}
 .alert{
     width: 25%;
     height: 3%;
