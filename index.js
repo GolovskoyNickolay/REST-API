@@ -286,7 +286,6 @@ function sendComment() {
         }, 2000);
     }
     if (token !== undefined) {
-        if (text[0].value == "" || starsValue == undefined) {
             if (text[0].value == "") {
                 text.attr({
                     'data-toggle': 'popover',
@@ -309,7 +308,7 @@ function sendComment() {
                     stars.popover("hide");
                 }, 3000);
             }
-        }
+
     }
     if (text[0].value !== "" && starsValue !== undefined) {
         xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
