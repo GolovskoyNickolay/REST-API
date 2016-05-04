@@ -1,4 +1,4 @@
-var val, token, starsValue, username;
+var val, token, starsValue, username, password;
 
 window.onload = function () {
     var xhr = new XMLHttpRequest();
@@ -46,6 +46,7 @@ $("#text").click(function () {
     }, 0);
 });
 $("#buttonExit").click(function () {
+    localStorage.clear();
     $("#yourName").hide();
     $("#buttonExit").hide();
     token = undefined;
@@ -74,7 +75,7 @@ $("#passwordAuthorisation").click(function () {
 
 function doSignUp() {
         username = $("#usernameRegistration");
-    var password = $("#passwordRegistration");
+        password = $("#passwordRegistration");
     var obj = {
         username: username[0].value,
         password: password[0].value
@@ -120,6 +121,8 @@ function doSignUp() {
                     $("#signUp").slideToggle("slow");
                     txt = JSON.parse(xhr.responseText);
                     token = txt.token;
+                    localStorage.setItem('username', document.getElementById("usernameRegistration").value);
+                    localStorage.setItem('password', document.getElementById("passwordRegistration").value);
                 }
             }
             if (xhr.status == 200) {
@@ -139,7 +142,7 @@ function doSignUp() {
 
 function doSignIn() {
     username = $("#usernameAuthorisation");
-    var password = $("#passwordAuthorisation");
+    password = $("#passwordAuthorisation");
     var obj = {
         username: username[0].value,
         password: password[0].value
@@ -184,6 +187,8 @@ function doSignIn() {
                         $("#buttonExit").show();
                         $("#signIn").toggle('slow');
                         token = a.token; //take token into the global scope for sending comments
+                        localStorage.setItem('username', document.getElementById("usernameAuthorisation").value);
+                        localStorage.setItem('password', document.getElementById("passwordAuthorisation").value);
                     }
                 }
                 if (a.success == false) {
@@ -323,7 +328,7 @@ function sendComment() {
                     var d = new Date();
                     d = d.toUTCString();
                     newElement.innerHTML = '<div class="list-group-item">' +
-                        '<p>' + username[0].value + ' at ' + d + '</p>' +
+                        '<p>' + localStorage.getItem('username') + ' at ' + d + '</p>' +
                         '<p> Rate: ' + starsValue + '</p>' +
                         '<p>' + text[0].value + '</p>' + '</div>';
                     b.insertBefore(newElement, b.children[0]);
@@ -333,6 +338,36 @@ function sendComment() {
         }
     }
 }
+
+
+    var obj = {
+        username: localStorage.getItem('username'),
+        password: localStorage.getItem('password')
+    };
+    var jsn = JSON.stringify(obj);
+    var xhr1 = new XMLHttpRequest();
+    xhr1.open('POST', 'http://smktesting.herokuapp.com/api/login/');
+    xhr1.setRequestHeader('Content-Type', 'application/json');
+    xhr1.send(jsn);
+    xhr1.onreadystatechange = function () {
+        if (xhr1.readyState == 4) {
+            if(xhr1.status == 200) {
+                var a1 = xhr1.responseText;
+                a1 = JSON.parse(a1);
+                token = a1.token;
+                if(localStorage.length > 0) {
+                    $("#prodList").find("p").remove();
+                    $("<p/>", {
+                        text: "You enter as " + localStorage.getItem('username'),
+                        id: "yourName"
+                    }).appendTo("#prodList");
+                    $("#buttonExit").show();
+                }
+            }
+        }
+    };
+
+
 
 
 
