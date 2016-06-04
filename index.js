@@ -314,7 +314,7 @@ function sendComment() {
                 }, 3000);
             }
 
-    }
+
     if (text[0].value !== "" && starsValue !== undefined) {
         xhr2.open('POST', 'http://smktesting.herokuapp.com/api/reviews/' + val + '');
         xhr2.setRequestHeader('Content-Type', 'application/json');
@@ -336,6 +336,7 @@ function sendComment() {
                 }
             }
         }
+        }
     }
 }
 
@@ -346,12 +347,13 @@ function sendComment() {
     };
     var jsn = JSON.stringify(obj);
     var xhr1 = new XMLHttpRequest();
+if(obj.username !== null){
     xhr1.open('POST', 'http://smktesting.herokuapp.com/api/login/');
     xhr1.setRequestHeader('Content-Type', 'application/json');
     xhr1.send(jsn);
     xhr1.onreadystatechange = function () {
         if (xhr1.readyState == 4) {
-            if(xhr1.status == 200) {
+            if(xhr1.status == 200 ) {
                 var a1 = xhr1.responseText;
                 a1 = JSON.parse(a1);
                 token = a1.token;
@@ -366,6 +368,8 @@ function sendComment() {
             }
         }
     };
+}
+
 
 
 
