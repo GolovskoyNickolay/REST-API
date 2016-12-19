@@ -1,7 +1,7 @@
 body {
   margin: 0 9% 0 9%;
   border: solid 1px black;
-  background: url("http://desktopbackgrounds4u.com/wp-content/gallery/powerpoint-background-hd/modern-blue-hd-background.jpg");
+  background:deepskyblue;
   background-size: 200% auto; }
 
 .container-fluid {
@@ -94,14 +94,14 @@ body {
   #reviewStars-input #star-0 {
     left: 0; }
   #reviewStars-input #star-1 {
-    left: 53; }
+    left: 53px; }
   #reviewStars-input #star-2 {
-    left: 106; }
+    left: 106px; }
   #reviewStars-input #star-3 {
-    left: 159; }
+    left: 159px; }
   #reviewStars-input #star-4 {
-    left: 212; }
+    left: 212px; }
   #reviewStars-input #star-5 {
-    left: 265; }
+    left: 265px; }
 
 /*# sourceMappingURL=qwe.css.map */
